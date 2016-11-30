@@ -9,7 +9,9 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		plugin = { "pretty", "html:target/cucumber", "json:target/cucumber.json"},
 		monochrome = true,
-		features = {"classpath:resources/story.feature"}
+		features = {
+				//"classpath:resources/story.feature",
+				"classpath:resources/certificate.feature"}
 )
 
 public class CucumberRunner {

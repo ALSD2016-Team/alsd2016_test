@@ -22,15 +22,65 @@ public class CertificateStep {
 	JSONObject sampleJsonObject ;
 	JSONObject inputJsonObject ;
 	
+	JSONObject sampleImageObject ;
+	JSONObject inputImageObject ;
+	
 	String sampleBase64BackgroundImage = null;
 	String inputBase64BackgroundImage = null;
 	
-	String [] inputCertificates = {"base64Image1", "base64Image2"} ;
-	String [] sampleCertificates = {"base64Image1", "base64Image2"};
 	
-	@Given("^I prepare data for generate certificates$") 
-	public void Prepare()  {
+	@Given("^I prepare \"([^\"]*)\" for generate certificates$") 
+	public void PrepareData(String data, String json)  {
+
+		/*Prepare students info*/
+		try {
+			
+			sampleJsonObject = new JSONObject(json);
+			inputJsonObject = new JSONObject(json);	
+	
+		} catch(Exception e){
+		    System.err.println("Error: " + e.getMessage());
+		}
+		
+		/*check data*/
+		assertEquals(sampleJsonObject.toString(), inputJsonObject.toString());
+		
+	}
+
+	@When("^I send data to backend$") 
+	public void SendData() {
+		
+//		String url = "140.138.xxx.xxx/getCertificates" ;
+//		/*Send background picture by API*/
+//		JSONObject response = null;
+//		try{
+//			HttpConnection connection = new HttpConnection() ;
+//			response = connection.Post(url, inputJsonObject);
+//		} catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//		
+//		inputCertificates = response.getString("certificates");
+//	    assertEquals("Success", response.getString("status"));
+	}
+
+	@Then("^I get \"([^\"]*)\"$")
+	public void GetCertificates(String certificates, String res)  {
+
+		/*check certificates*/
+		try{
+			sampleImageObject = new JSONObject(res);
+			inputImageObject = new JSONObject(res);
+			
+		} catch(Exception e){
+			System.err.println("Error: " + e.getMessage());
+		}
 	    
+	    assertEquals(sampleImageObject.toString(), inputImageObject.toString());
+	}
+	
+	@Given("^I prepare \"([^\"]*)\" for upload backgound$")
+	public void PrepareImage(String arg, String json) {
 		/*Prepare background picture*/
 		try {
 			BufferedImage  backgroundImage = ImageIO.read(new File("./image/backgroundImage.png")); 
@@ -56,30 +106,11 @@ public class CertificateStep {
 		{
 		    e.printStackTrace();
 		}
-		
-		/*Prepare students info*/
-		try {
-			String dataString = "{'data':{'courseName':'ALSD','courseDate':'2016-01-01','certificareDate': '2016-01-01', 'hours':40,"
-					+ "'students':[{'studentName':'student1','cateficateID':'#1'}]}}" ;
-			
-			sampleJsonObject = new JSONObject(dataString);
-			inputJsonObject = new JSONObject(dataString);
-			
-	
-		} catch(Exception e){
-		    System.err.println("Error: " + e.getMessage());
-		}
-		
-		/*check data*/
-		assertEquals(sampleJsonObject.toString(), inputJsonObject.toString());
-		assertEquals(sampleBase64BackgroundImage, inputBase64BackgroundImage);
-		
+	    
 	}
 
-
-	@When("^I send the background of the certificate to backend$") 
-	public void SendBackGround() throws Exception {
-		
+	@When("^I send the image to backend$")
+	public void SendImage() {
 //		String url = "140.138.xxx.xxx/upload/backgoundImage" ;
 //		/*Send background picture by API*/
 //		JSONObject response = null;
@@ -91,33 +122,24 @@ public class CertificateStep {
 //        }
 //		
 //	    assertEquals("Success", response.getString("status"));
-		
 	}
 
-	@When("^I send student and course information to backend$") 
-	public void SendInfo() {
+	@Then("^I receive \"([^\"]*)\"$")
+	public void ReceiveResponse(String arg, String response){
 		
-//		String url = "140.138.xxx.xxx/getCertificates" ;
-//		/*Send background picture by API*/
-//		JSONObject response = null;
-//		try{
-//			HttpConnection connection = new HttpConnection() ;
-//			response = connection.Post(url, inputJsonObject);
-//		} catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//		
-//		inputCertificates = response.getString("certificates");
-//	    assertEquals("Success", response.getString("status"));
-	}
-
-	@Then("^I receive certificates$")
-	public void Receive()  {
-	    
-		/*check certificates*/
-		for(int i = 0 ; i < sampleCertificates.length ; i++){
-			assertEquals(sampleCertificates[i], inputCertificates[i]);
+		JSONObject sampleResponse = null;
+		JSONObject inputResponse = null ;
+		/*check status*/
+		try{
+			sampleResponse = new JSONObject(response);
+			inputResponse = new JSONObject(response);
+			
+		} catch(Exception e){
+			System.err.println("Error: " + e.getMessage());
 		}
+	    
+	    assertEquals(sampleResponse.toString(), inputResponse.toString());
+		
 	}
-	
+
 }

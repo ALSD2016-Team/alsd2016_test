@@ -3,74 +3,146 @@
     "line": 1,
     "elements": [
       {
-        "line": 10,
-        "name": "Get API!",
+        "line": 3,
+        "name": "Generate Certificates",
         "description": "",
-        "id": "get-api;get-api!;;2",
+        "id": "certificate;generate-certificates",
         "type": "scenario",
-        "keyword": "Scenario Outline",
+        "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 185967466,
+              "duration": 54406691,
               "status": "passed"
             },
             "line": 4,
-            "name": "api url \"\"",
+            "name": "I prepare \"data\" for generate certificates",
             "match": {
               "arguments": [
                 {
-                  "val": "",
-                  "offset": 9
+                  "val": "data",
+                  "offset": 11
                 }
               ],
-              "location": "EchoStepdefs.readURL(String)"
+              "location": "CertificateStep.PrepareData(String,String)"
             },
-            "matchedColumns": [
-              0
-            ],
-            "keyword": "Given "
+            "keyword": "Given ",
+            "doc_string": {
+              "content_type": "",
+              "line": 5,
+              "value": "{\r\n\u0027courseName\u0027 : \u0027ALSD\u0027,\r\n\u0027courseDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027certificareDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027hours\u0027 : 40,\r\n\u0027students\u0027 : \r\n[\r\n{\r\n\u0027studentName\u0027 : \u0027student1\u0027,\r\n\u0027cateficateID\u0027 : \u0027#1\u0027\r\n},\r\n{\r\n\u0027studentName\u0027 : \u0027student2\u0027,\r\n\u0027cateficateID\u0027 : \u0027#2\u0027\r\n}\r\n]\r\n}"
+            }
           },
           {
             "result": {
-              "duration": 2726030758,
+              "duration": 8754,
               "status": "passed"
             },
-            "line": 5,
-            "name": "I ask url",
+            "line": 25,
+            "name": "I send data to backend",
             "match": {
-              "location": "EchoStepdefs.askAPI()"
+              "location": "CertificateStep.SendData()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 1692041,
+              "duration": 144295,
               "status": "passed"
             },
-            "line": 6,
-            "name": "I receive \"Hello world.\"",
+            "line": 26,
+            "name": "I get \"certificates\"",
             "match": {
               "arguments": [
                 {
-                  "val": "Hello world.",
+                  "val": "certificates",
+                  "offset": 7
+                }
+              ],
+              "location": "CertificateStep.GetCertificates(String,String)"
+            },
+            "keyword": "Then ",
+            "doc_string": {
+              "content_type": "",
+              "line": 27,
+              "value": "{\r\n\t\u0027certificates\u0027 : \r\n\t[\r\n\t\t{\r\n\t\t\t\u0027image\u0027 : \"base64Image1\"\r\n \t},\r\n \t{\r\n \t\t\u0027image\u0027 : \"base64Image2\"\r\n \t}\r\n\t\t\r\n\t]\r\n}"
+            }
+          }
+        ]
+      },
+      {
+        "line": 42,
+        "name": "Upload background",
+        "description": "",
+        "id": "certificate;upload-background",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 841651865,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "I prepare \"image\" for upload backgound",
+            "match": {
+              "arguments": [
+                {
+                  "val": "image",
                   "offset": 11
                 }
               ],
-              "location": "EchoStepdefs.Receive(String)"
+              "location": "CertificateStep.PrepareImage(String,String)"
             },
-            "matchedColumns": [
-              1
-            ],
-            "keyword": "Then "
+            "keyword": "Given ",
+            "doc_string": {
+              "content_type": "",
+              "line": 44,
+              "value": "{\r\n\u0027image\u0027 : \u0027base64Image\u0027\r\n}"
+            }
+          },
+          {
+            "result": {
+              "duration": 17509,
+              "status": "passed"
+            },
+            "line": 49,
+            "name": "I send the image to backend",
+            "match": {
+              "location": "CertificateStep.SendImage()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 82713,
+              "status": "passed"
+            },
+            "line": 50,
+            "name": "I receive \"response\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "response",
+                  "offset": 11
+                }
+              ],
+              "location": "CertificateStep.ReceiveResponse(String,String)"
+            },
+            "keyword": "Then ",
+            "doc_string": {
+              "content_type": "",
+              "line": 51,
+              "value": "{\r\n\u0027status\u0027 : \u0027200\u0027\r\n}"
+            }
           }
         ]
       }
     ],
-    "name": "Get API",
+    "name": "Certificate",
     "description": "",
-    "id": "get-api",
+    "id": "certificate",
     "keyword": "Feature",
-    "uri": "resources/story.feature"
+    "uri": "resources/certificate.feature"
   }
 ]

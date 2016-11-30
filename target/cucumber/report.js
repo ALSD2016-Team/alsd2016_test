@@ -1,119 +1,141 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("resources/story.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("resources/certificate.feature");
 formatter.feature({
   "line": 1,
-  "name": "Get API",
+  "name": "Certificate",
   "description": "",
-  "id": "get-api",
+  "id": "certificate",
   "keyword": "Feature"
 });
-formatter.scenarioOutline({
-  "line": 3,
-  "name": "Get API!",
-  "description": "",
-  "id": "get-api;get-api!",
-  "type": "scenario_outline",
-  "keyword": "Scenario Outline"
-});
-formatter.step({
-  "line": 4,
-  "name": "api url \"\u003cmethod\u003e\"",
-  "keyword": "Given "
-});
-formatter.step({
-  "line": 5,
-  "name": "I ask url",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 6,
-  "name": "I receive \"\u003cString\u003e\"",
-  "keyword": "Then "
-});
-formatter.examples({
-  "line": 8,
-  "name": "",
-  "description": "",
-  "id": "get-api;get-api!;",
-  "rows": [
-    {
-      "cells": [
-        "method",
-        "String"
-      ],
-      "line": 9,
-      "id": "get-api;get-api!;;1"
-    },
-    {
-      "cells": [
-        "",
-        "Hello world."
-      ],
-      "line": 10,
-      "id": "get-api;get-api!;;2"
-    }
-  ],
-  "keyword": "Examples"
-});
 formatter.scenario({
-  "line": 10,
-  "name": "Get API!",
+  "line": 3,
+  "name": "Generate Certificates",
   "description": "",
-  "id": "get-api;get-api!;;2",
+  "id": "certificate;generate-certificates",
   "type": "scenario",
-  "keyword": "Scenario Outline"
+  "keyword": "Scenario"
 });
 formatter.step({
   "line": 4,
-  "name": "api url \"\"",
-  "matchedColumns": [
-    0
-  ],
-  "keyword": "Given "
+  "name": "I prepare \"data\" for generate certificates",
+  "keyword": "Given ",
+  "doc_string": {
+    "content_type": "",
+    "line": 5,
+    "value": "{\r\n\u0027courseName\u0027 : \u0027ALSD\u0027,\r\n\u0027courseDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027certificareDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027hours\u0027 : 40,\r\n\u0027students\u0027 : \r\n[\r\n{\r\n\u0027studentName\u0027 : \u0027student1\u0027,\r\n\u0027cateficateID\u0027 : \u0027#1\u0027\r\n},\r\n{\r\n\u0027studentName\u0027 : \u0027student2\u0027,\r\n\u0027cateficateID\u0027 : \u0027#2\u0027\r\n}\r\n]\r\n}"
+  }
 });
 formatter.step({
-  "line": 5,
-  "name": "I ask url",
+  "line": 25,
+  "name": "I send data to backend",
   "keyword": "When "
 });
 formatter.step({
-  "line": 6,
-  "name": "I receive \"Hello world.\"",
-  "matchedColumns": [
-    1
-  ],
-  "keyword": "Then "
+  "line": 26,
+  "name": "I get \"certificates\"",
+  "keyword": "Then ",
+  "doc_string": {
+    "content_type": "",
+    "line": 27,
+    "value": "{\r\n\t\u0027certificates\u0027 : \r\n\t[\r\n\t\t{\r\n\t\t\t\u0027image\u0027 : \"base64Image1\"\r\n \t},\r\n \t{\r\n \t\t\u0027image\u0027 : \"base64Image2\"\r\n \t}\r\n\t\t\r\n\t]\r\n}"
+  }
 });
 formatter.match({
   "arguments": [
     {
-      "val": "",
-      "offset": 9
-    }
-  ],
-  "location": "EchoStepdefs.readURL(String)"
-});
-formatter.result({
-  "duration": 185967466,
-  "status": "passed"
-});
-formatter.match({
-  "location": "EchoStepdefs.askAPI()"
-});
-formatter.result({
-  "duration": 2726030758,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "Hello world.",
+      "val": "data",
       "offset": 11
     }
   ],
-  "location": "EchoStepdefs.Receive(String)"
+  "location": "CertificateStep.PrepareData(String,String)"
 });
 formatter.result({
-  "duration": 1692041,
+  "duration": 54406691,
+  "status": "passed"
+});
+formatter.match({
+  "location": "CertificateStep.SendData()"
+});
+formatter.result({
+  "duration": 8754,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "certificates",
+      "offset": 7
+    }
+  ],
+  "location": "CertificateStep.GetCertificates(String,String)"
+});
+formatter.result({
+  "duration": 144295,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 42,
+  "name": "Upload background",
+  "description": "",
+  "id": "certificate;upload-background",
+  "type": "scenario",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "line": 43,
+  "name": "I prepare \"image\" for upload backgound",
+  "keyword": "Given ",
+  "doc_string": {
+    "content_type": "",
+    "line": 44,
+    "value": "{\r\n\u0027image\u0027 : \u0027base64Image\u0027\r\n}"
+  }
+});
+formatter.step({
+  "line": 49,
+  "name": "I send the image to backend",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 50,
+  "name": "I receive \"response\"",
+  "keyword": "Then ",
+  "doc_string": {
+    "content_type": "",
+    "line": 51,
+    "value": "{\r\n\u0027status\u0027 : \u0027200\u0027\r\n}"
+  }
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "image",
+      "offset": 11
+    }
+  ],
+  "location": "CertificateStep.PrepareImage(String,String)"
+});
+formatter.result({
+  "duration": 841651865,
+  "status": "passed"
+});
+formatter.match({
+  "location": "CertificateStep.SendImage()"
+});
+formatter.result({
+  "duration": 17509,
+  "status": "passed"
+});
+formatter.match({
+  "arguments": [
+    {
+      "val": "response",
+      "offset": 11
+    }
+  ],
+  "location": "CertificateStep.ReceiveResponse(String,String)"
+});
+formatter.result({
+  "duration": 82713,
   "status": "passed"
 });
 });

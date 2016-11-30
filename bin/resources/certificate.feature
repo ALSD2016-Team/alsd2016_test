@@ -1,7 +1,55 @@
 Feature: Certificate
   
   Scenario: Generate Certificates
-    Given I prepare data for generate certificates
-    When I send the background of the certificate to backend
-    And I send student and course information to backend
-    Then I receive certificates
+    Given I prepare "data" for generate certificates
+    """
+    {
+		'courseName' : 'ALSD',
+		'courseDate' : '2016-01-01',
+		'certificareDate' : '2016-01-01',
+		'hours' : 40,
+		'students' : 
+		[
+			{
+				'studentName' : 'student1',
+				'cateficateID' : '#1'
+			},
+			{
+				'studentName' : 'student2',
+				'cateficateID' : '#2'
+			}
+		]
+	}
+    """
+    
+    When I send data to backend
+    Then I get "certificates"
+    """
+    {
+    	'certificates' : 
+    	[
+    		{
+    			'image' : "base64Image1"
+	    	},
+	    	{
+	    		'image' : "base64Image2"
+	    	}
+    		
+    	]
+    }
+    """
+    
+  Scenario: Upload background
+    Given I prepare "image" for upload backgound
+    """
+    {
+		'image' : 'base64Image'
+	}
+    """
+    When I send the image to backend
+    Then I receive "response"
+    """
+    {
+		'status' : '200'
+	}
+    """
