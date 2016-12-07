@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -29,21 +30,22 @@ public class CertificateStep {
 	String inputBase64BackgroundImage = null;
 	
 	
-	@Given("^I prepare \"([^\"]*)\" for generate certificates$") 
-	public void PrepareData(String data, String json)  {
-
-		/*Prepare students info*/
-		try {
-			
-			sampleJsonObject = new JSONObject(json);
-			inputJsonObject = new JSONObject(json);	
-	
-		} catch(Exception e){
-		    System.err.println("Error: " + e.getMessage());
-		}
+	@Given("^I prepare courseInfo and studentsInfo for generate certificates$") 
+	public void PrepareData(Map<String, String> dataList)  {
 		
-		/*check data*/
-		assertEquals(sampleJsonObject.toString(), inputJsonObject.toString());
+		System.out.print(dataList.get("courseName"));
+		/*Prepare students info*/
+//		try {
+//			
+//			sampleJsonObject = new JSONObject(studentsInfo);
+//			inputJsonObject = new JSONObject(studentsInfo);	
+//	
+//		} catch(Exception e){
+//		    System.err.println("Error: " + e.getMessage());
+//		}
+//		
+//		/*check data*/
+//		assertEquals(sampleJsonObject.toString(), inputJsonObject.toString());
 		
 	}
 
@@ -68,15 +70,15 @@ public class CertificateStep {
 	public void GetCertificates(String certificates, String res)  {
 
 		/*check certificates*/
-		try{
-			sampleImageObject = new JSONObject(res);
-			inputImageObject = new JSONObject(res);
-			
-		} catch(Exception e){
-			System.err.println("Error: " + e.getMessage());
-		}
-	    
-	    assertEquals(sampleImageObject.toString(), inputImageObject.toString());
+//		try{
+//			sampleImageObject = new JSONObject(res);
+//			inputImageObject = new JSONObject(res);
+//			
+//		} catch(Exception e){
+//			System.err.println("Error: " + e.getMessage());
+//		}
+//	    
+//	    assertEquals(sampleImageObject.toString(), inputImageObject.toString());
 	}
 	
 	@Given("^I prepare \"([^\"]*)\" for upload backgound$")

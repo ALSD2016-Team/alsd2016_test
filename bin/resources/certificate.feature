@@ -1,26 +1,16 @@
 Feature: Certificate
   
+
   Scenario: Generate Certificates
-    Given I prepare "data" for generate certificates
-    """
-    {
-		'courseName' : 'ALSD',
-		'courseDate' : '2016-01-01',
-		'certificareDate' : '2016-01-01',
-		'hours' : 40,
-		'students' : 
-		[
-			{
-				'studentName' : 'student1',
-				'cateficateID' : '#1'
-			},
-			{
-				'studentName' : 'student2',
-				'cateficateID' : '#2'
-			}
-		]
-	}
-    """
+    Given I prepare courseInfo and studentsInfo for generate certificates
+    
+    | Fields                 | Values              |
+	| courseName             | 'ALSD'              |
+	| courseDate             | '2016-01-01'        |
+	| certificareDate        | '2016-01-01'        |
+	| hours                  | 40                  |
+	| studentsInfo			 |"[{'studentName' : 'student1','cateficateID' : '#1'},{'studentName' : 'student2','cateficateID' : '#2'}]"|
+	
     
     When I send data to backend
     Then I get "certificates"

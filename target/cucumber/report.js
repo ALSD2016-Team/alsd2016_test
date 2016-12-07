@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "line": 3,
+  "line": 4,
   "name": "Generate Certificates",
   "description": "",
   "id": "certificate;generate-certificates",
@@ -15,49 +15,86 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "line": 4,
-  "name": "I prepare \"data\" for generate certificates",
+  "line": 5,
+  "name": "I prepare courseInfo and \"studentsInfo\" for generate certificates",
+  "rows": [
+    {
+      "cells": [
+        "Fields",
+        "Values"
+      ],
+      "line": 7
+    },
+    {
+      "cells": [
+        "courseName",
+        "\u0027ALSD\u0027"
+      ],
+      "line": 8
+    },
+    {
+      "cells": [
+        "courseDate",
+        "\u00272016-01-01\u0027"
+      ],
+      "line": 9
+    },
+    {
+      "cells": [
+        "certificareDate",
+        "\u00272016-01-01\u0027"
+      ],
+      "line": 10
+    },
+    {
+      "cells": [
+        "hours",
+        "40"
+      ],
+      "line": 11
+    }
+  ],
   "keyword": "Given ",
   "doc_string": {
     "content_type": "",
-    "line": 5,
+    "line": 14,
     "value": "{\r\n\u0027courseName\u0027 : \u0027ALSD\u0027,\r\n\u0027courseDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027certificareDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027hours\u0027 : 40,\r\n\u0027students\u0027 : \r\n[\r\n{\r\n\u0027studentName\u0027 : \u0027student1\u0027,\r\n\u0027cateficateID\u0027 : \u0027#1\u0027\r\n},\r\n{\r\n\u0027studentName\u0027 : \u0027student2\u0027,\r\n\u0027cateficateID\u0027 : \u0027#2\u0027\r\n}\r\n]\r\n}"
   }
 });
 formatter.step({
-  "line": 25,
+  "line": 34,
   "name": "I send data to backend",
   "keyword": "When "
 });
 formatter.step({
-  "line": 26,
+  "line": 35,
   "name": "I get \"certificates\"",
   "keyword": "Then ",
   "doc_string": {
     "content_type": "",
-    "line": 27,
+    "line": 36,
     "value": "{\r\n\t\u0027certificates\u0027 : \r\n\t[\r\n\t\t{\r\n\t\t\t\u0027image\u0027 : \"base64Image1\"\r\n \t},\r\n \t{\r\n \t\t\u0027image\u0027 : \"base64Image2\"\r\n \t}\r\n\t\t\r\n\t]\r\n}"
   }
 });
 formatter.match({
   "arguments": [
     {
-      "val": "data",
-      "offset": 11
+      "val": "studentsInfo",
+      "offset": 26
     }
   ],
-  "location": "CertificateStep.PrepareData(String,String)"
+  "location": "CertificateStep.PrepareData(String,DataTable)"
 });
 formatter.result({
-  "duration": 54406691,
-  "status": "passed"
+  "duration": 72814948,
+  "error_message": "java.lang.NullPointerException\r\n\tat ALSD.CucumberTest.CertificateStep.PrepareData(CertificateStep.java:49)\r\n\tat ✽.Given I prepare courseInfo and \"studentsInfo\" for generate certificates(resources/certificate.feature:5)\r\n",
+  "status": "failed"
 });
 formatter.match({
   "location": "CertificateStep.SendData()"
 });
 formatter.result({
-  "duration": 8754,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.match({
   "arguments": [
@@ -69,11 +106,10 @@ formatter.match({
   "location": "CertificateStep.GetCertificates(String,String)"
 });
 formatter.result({
-  "duration": 144295,
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.scenario({
-  "line": 42,
+  "line": 51,
   "name": "Upload background",
   "description": "",
   "id": "certificate;upload-background",
@@ -81,27 +117,27 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "line": 43,
+  "line": 52,
   "name": "I prepare \"image\" for upload backgound",
   "keyword": "Given ",
   "doc_string": {
     "content_type": "",
-    "line": 44,
+    "line": 53,
     "value": "{\r\n\u0027image\u0027 : \u0027base64Image\u0027\r\n}"
   }
 });
 formatter.step({
-  "line": 49,
+  "line": 58,
   "name": "I send the image to backend",
   "keyword": "When "
 });
 formatter.step({
-  "line": 50,
+  "line": 59,
   "name": "I receive \"response\"",
   "keyword": "Then ",
   "doc_string": {
     "content_type": "",
-    "line": 51,
+    "line": 60,
     "value": "{\r\n\u0027status\u0027 : \u0027200\u0027\r\n}"
   }
 });
@@ -115,14 +151,14 @@ formatter.match({
   "location": "CertificateStep.PrepareImage(String,String)"
 });
 formatter.result({
-  "duration": 841651865,
+  "duration": 861588508,
   "status": "passed"
 });
 formatter.match({
   "location": "CertificateStep.SendImage()"
 });
 formatter.result({
-  "duration": 17509,
+  "duration": 14188,
   "status": "passed"
 });
 formatter.match({
@@ -135,7 +171,7 @@ formatter.match({
   "location": "CertificateStep.ReceiveResponse(String,String)"
 });
 formatter.result({
-  "duration": 82713,
+  "duration": 1441447,
   "status": "passed"
 });
 });
