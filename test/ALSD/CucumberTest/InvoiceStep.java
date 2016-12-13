@@ -22,23 +22,23 @@ public class InvoiceStep {
 	
 	WebDriver driver;
 
-	@Given("^Open browser and start application$") 
-	public void StartApplication(){
+	@Given("^Open browser and open the application of triplicate uniform invoice$") 
+	public void StartTUIApplication(){
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		//driver.manage().window().maximize();
 		driver.get("http://localhost:9091/#/others/invoice");
 	}
 
-	@When("^I enter the data into the invoice form$")
-	public void EnterData(Map<String, String> dataList) throws InterruptedException {
+	@When("^I enter the data into the form of triplicate uniform invoice$")
+	public void EnterDataToTUI(Map<String, String> dataList) throws InterruptedException {
 		
 		TimeUnit.SECONDS.sleep(1);
-		driver.findElement(By.id("item-name")).clear();
-		driver.findElement(By.id("item-name")).sendKeys(dataList.get("itemName"));
+		driver.findElement(By.id("TUI_itemName")).clear();
+		driver.findElement(By.id("TUI_itemName")).sendKeys(dataList.get("itemName"));
 		TimeUnit.SECONDS.sleep(1);
-		driver.findElement(By.id("item-dollar")).clear();
-		driver.findElement(By.id("item-dollar")).sendKeys(dataList.get("itemDollar"));
+		driver.findElement(By.id("TUI_itemDollar")).clear();
+		driver.findElement(By.id("TUI_itemDollar")).sendKeys(dataList.get("itemDollar"));
 		TimeUnit.SECONDS.sleep(1);
 		
 		driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
@@ -52,8 +52,8 @@ public class InvoiceStep {
 		
 	}
 
-	@Then("^I click preview button and see the result$")
-	public void ClickPreviewButton(Map<String, String> dataList) throws Throwable {
+	@Then("^I click preview button and see the result of triplicate uniform invoice$")
+	public void ClickTUIPreviewButton(Map<String, String> dataList) throws Throwable {
 	    
 		TimeUnit.SECONDS.sleep(2);
 
@@ -80,12 +80,75 @@ public class InvoiceStep {
 		assertEquals(dataList.get("salesDollar"), driver.findElement(By.id("result_sales_dollar")).getText());
 		assertEquals(dataList.get("businessTax"), driver.findElement(By.id("result_business_tax")).getText());
 		
-		String numberWord = driver.findElement(By.id("result_number_word_4")).getText() +
+		String numberWord = 
+				driver.findElement(By.id("result_number_word_4")).getText() +
 				driver.findElement(By.id("result_number_word_5")).getText() +
 				driver.findElement(By.id("result_number_word_6")).getText() +
 				driver.findElement(By.id("result_number_word_7")).getText() +
 				driver.findElement(By.id("result_number_word_8")).getText() ;
-		assertEquals(numberWord, "壹零零零參");
+		
+		assertEquals("壹零零零參", numberWord);
+		driver.quit();
+	}
+
+	@Given("^Open browser and open the application of duplicate uniform invoice$") 
+	public void StartDUIApplication() throws InterruptedException{
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		driver = new ChromeDriver();
+		//driver.manage().window().maximize();
+		driver.get("http://localhost:9091/#/others/invoice");
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.id("DUI_button")).click();
+	}
+	
+	@When("^I enter the data into the form of duplicate uniform invoice$")
+	public void EnterDataToDUI(Map<String, String> dataList) throws InterruptedException {
+		
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.id("CompanyName")).clear();
+		driver.findElement(By.id("CompanyName")).sendKeys(dataList.get("companyName"));
+
+		driver.findElement(By.id("DUI_itemName")).clear();
+		driver.findElement(By.id("DUI_itemName")).sendKeys(dataList.get("itemName"));
+
+		driver.findElement(By.id("DUI_itemNumber")).clear();
+		driver.findElement(By.id("DUI_itemNumber")).sendKeys(dataList.get("itemNumber"));
+
+		driver.findElement(By.id("DUI_itemDollar")).clear();
+		driver.findElement(By.id("DUI_itemDollar")).sendKeys(dataList.get("itemDollar"));
+
+		driver.findElement(By.id("DUI_dateInput")).clear();
+		driver.findElement(By.id("DUI_dateInput")).sendKeys("2016 年 12 月 10 日");
+		TimeUnit.SECONDS.sleep(1);
+		driver.findElement(By.id("DUI_previewButton")).click();
+		
+	}
+	
+	@When("^I click preview button and see the result of duplicate uniform invoice$")
+	public void ClickDUIPreviewButton(Map<String, String> dataList) throws Throwable {
+	    
+		TimeUnit.SECONDS.sleep(2);
+		
+		assertEquals("一 O 五 年 十一、十二 月 份", driver.findElement(By.id("DUI_result_date")).getText());
+		assertEquals(dataList.get("companyName"), driver.findElement(By.id("DUI_result_companyName")).getText());
+
+		assertEquals(dataList.get("year"), driver.findElement(By.id("DUI_result_year")).getText());
+		assertEquals(dataList.get("month"), driver.findElement(By.id("DUI_result_month")).getText());
+		assertEquals(dataList.get("day"), driver.findElement(By.id("DUI_result_day")).getText());
+		assertEquals(dataList.get("itemName"), driver.findElement(By.id("DUI_result_itemName")).getText());
+		assertEquals(dataList.get("itemNumber"), driver.findElement(By.id("DUI_result_itemNumber")).getText());
+		assertEquals(dataList.get("itemDollar"), driver.findElement(By.id("DUI_result_itemDollar")).getText());
+		assertEquals(dataList.get("itemTotalDollar"), driver.findElement(By.id("DUI_result_itemTotalDollar")).getText());
+		assertEquals(dataList.get("totalDollar"), driver.findElement(By.id("DUI_result_totalDollar")).getText());
+		
+		String numberWord = 
+				driver.findElement(By.id("DUI_result_numberWord_4")).getText() +
+				driver.findElement(By.id("DUI_result_numberWord_5")).getText() +
+				driver.findElement(By.id("DUI_result_numberWord_6")).getText() +
+				driver.findElement(By.id("DUI_result_numberWord_7")).getText() +
+				driver.findElement(By.id("DUI_result_numberWord_8")).getText() ;
+		
+		assertEquals("壹玖零伍肆", numberWord);
 		driver.quit();
 	}
 }

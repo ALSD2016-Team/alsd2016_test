@@ -3,29 +3,34 @@
     "line": 1,
     "elements": [
       {
-        "line": 4,
-        "name": "Generate Certificates",
+        "line": 3,
+        "name": "Triplicate Uniform Invoice",
         "description": "",
-        "id": "certificate;generate-certificates",
+        "id": "test-invoice-preview;triplicate-uniform-invoice",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 72814948,
-              "error_message": "java.lang.NullPointerException\r\n\tat ALSD.CucumberTest.CertificateStep.PrepareData(CertificateStep.java:49)\r\n\tat ✽.Given I prepare courseInfo and \"studentsInfo\" for generate certificates(resources/certificate.feature:5)\r\n",
-              "status": "failed"
+              "duration": 2901207068,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "Open browser and start application",
+            "match": {
+              "location": "InvoiceStep.StartApplication()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4077799807,
+              "status": "passed"
             },
             "line": 5,
-            "name": "I prepare courseInfo and \"studentsInfo\" for generate certificates",
+            "name": "I enter the data into the invoice form",
             "match": {
-              "arguments": [
-                {
-                  "val": "studentsInfo",
-                  "offset": 26
-                }
-              ],
-              "location": "CertificateStep.PrepareData(String,DataTable)"
+              "location": "InvoiceStep.EnterData(String,String\u003e)"
             },
             "rows": [
               {
@@ -37,148 +42,182 @@
               },
               {
                 "cells": [
-                  "courseName",
-                  "\u0027ALSD\u0027"
+                  "componyId",
+                  "53909614"
                 ],
                 "line": 8
               },
               {
                 "cells": [
-                  "courseDate",
-                  "\u00272016-01-01\u0027"
+                  "companyName",
+                  "���}�n���ަ������q"
                 ],
                 "line": 9
               },
               {
                 "cells": [
-                  "certificareDate",
-                  "\u00272016-01-01\u0027"
+                  "taxRate",
+                  "6"
                 ],
                 "line": 10
               },
               {
                 "cells": [
-                  "hours",
-                  "40"
+                  "itemName",
+                  "Education"
                 ],
                 "line": 11
+              },
+              {
+                "cells": [
+                  "itemNumber",
+                  "1"
+                ],
+                "line": 12
+              },
+              {
+                "cells": [
+                  "itemDollar",
+                  "9527"
+                ],
+                "line": 13
+              },
+              {
+                "cells": [
+                  "date",
+                  "2016 �~ 12 �� 10 ��"
+                ],
+                "line": 14
               }
             ],
-            "keyword": "Given ",
-            "doc_string": {
-              "content_type": "",
-              "line": 14,
-              "value": "{\r\n\u0027courseName\u0027 : \u0027ALSD\u0027,\r\n\u0027courseDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027certificareDate\u0027 : \u00272016-01-01\u0027,\r\n\u0027hours\u0027 : 40,\r\n\u0027students\u0027 : \r\n[\r\n{\r\n\u0027studentName\u0027 : \u0027student1\u0027,\r\n\u0027cateficateID\u0027 : \u0027#1\u0027\r\n},\r\n{\r\n\u0027studentName\u0027 : \u0027student2\u0027,\r\n\u0027cateficateID\u0027 : \u0027#2\u0027\r\n}\r\n]\r\n}"
-            }
-          },
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "line": 34,
-            "name": "I send data to backend",
-            "match": {
-              "location": "CertificateStep.SendData()"
-            },
             "keyword": "When "
           },
           {
             "result": {
-              "status": "skipped"
-            },
-            "line": 35,
-            "name": "I get \"certificates\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "certificates",
-                  "offset": 7
-                }
-              ],
-              "location": "CertificateStep.GetCertificates(String,String)"
-            },
-            "keyword": "Then ",
-            "doc_string": {
-              "content_type": "",
-              "line": 36,
-              "value": "{\r\n\t\u0027certificates\u0027 : \r\n\t[\r\n\t\t{\r\n\t\t\t\u0027image\u0027 : \"base64Image1\"\r\n \t},\r\n \t{\r\n \t\t\u0027image\u0027 : \"base64Image2\"\r\n \t}\r\n\t\t\r\n\t]\r\n}"
-            }
-          }
-        ]
-      },
-      {
-        "line": 51,
-        "name": "Upload background",
-        "description": "",
-        "id": "certificate;upload-background",
-        "type": "scenario",
-        "keyword": "Scenario",
-        "steps": [
-          {
-            "result": {
-              "duration": 861588508,
+              "duration": 4319613627,
               "status": "passed"
             },
-            "line": 52,
-            "name": "I prepare \"image\" for upload backgound",
+            "line": 16,
+            "name": "I click preview button and see the result",
             "match": {
-              "arguments": [
-                {
-                  "val": "image",
-                  "offset": 11
-                }
-              ],
-              "location": "CertificateStep.PrepareImage(String,String)"
+              "location": "InvoiceStep.ClickPreviewButton(String,String\u003e)"
             },
-            "keyword": "Given ",
-            "doc_string": {
-              "content_type": "",
-              "line": 53,
-              "value": "{\r\n\u0027image\u0027 : \u0027base64Image\u0027\r\n}"
-            }
-          },
-          {
-            "result": {
-              "duration": 14188,
-              "status": "passed"
-            },
-            "line": 58,
-            "name": "I send the image to backend",
-            "match": {
-              "location": "CertificateStep.SendImage()"
-            },
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 1441447,
-              "status": "passed"
-            },
-            "line": 59,
-            "name": "I receive \"response\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "response",
-                  "offset": 11
-                }
-              ],
-              "location": "CertificateStep.ReceiveResponse(String,String)"
-            },
-            "keyword": "Then ",
-            "doc_string": {
-              "content_type": "",
-              "line": 60,
-              "value": "{\r\n\u0027status\u0027 : \u0027200\u0027\r\n}"
-            }
+            "rows": [
+              {
+                "cells": [
+                  "Fields",
+                  "Values"
+                ],
+                "line": 18
+              },
+              {
+                "cells": [
+                  "date",
+                  "�@ O �� �~ �Q�@�B�Q�G �� ��"
+                ],
+                "line": 19
+              },
+              {
+                "cells": [
+                  "companyName",
+                  "���}�n���ަ������q"
+                ],
+                "line": 20
+              },
+              {
+                "cells": [
+                  "companyId",
+                  "53909614"
+                ],
+                "line": 21
+              },
+              {
+                "cells": [
+                  "year",
+                  "105"
+                ],
+                "line": 22
+              },
+              {
+                "cells": [
+                  "month",
+                  "12"
+                ],
+                "line": 23
+              },
+              {
+                "cells": [
+                  "day",
+                  "10"
+                ],
+                "line": 24
+              },
+              {
+                "cells": [
+                  "itemName",
+                  "Education"
+                ],
+                "line": 25
+              },
+              {
+                "cells": [
+                  "itemCount",
+                  "1"
+                ],
+                "line": 26
+              },
+              {
+                "cells": [
+                  "itemDollar",
+                  "9,527"
+                ],
+                "line": 27
+              },
+              {
+                "cells": [
+                  "itemTotalDollar",
+                  "9,527"
+                ],
+                "line": 28
+              },
+              {
+                "cells": [
+                  "salesDollar",
+                  "9,527"
+                ],
+                "line": 29
+              },
+              {
+                "cells": [
+                  "businessTax",
+                  "476"
+                ],
+                "line": 30
+              },
+              {
+                "cells": [
+                  "totalDollar",
+                  "10003"
+                ],
+                "line": 31
+              },
+              {
+                "cells": [
+                  "numberWord",
+                  "���s�s�s��"
+                ],
+                "line": 32
+              }
+            ],
+            "keyword": "Then "
           }
         ]
       }
     ],
-    "name": "Certificate",
+    "name": "Test invoice preview",
     "description": "",
-    "id": "certificate",
+    "id": "test-invoice-preview",
     "keyword": "Feature",
-    "uri": "resources/certificate.feature"
+    "uri": "resources/invoice.feature"
   }
 ]

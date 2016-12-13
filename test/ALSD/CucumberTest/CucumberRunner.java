@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 		features = {
 				//"classpath:resources/story.feature",
 				//"classpath:resources/certificate.feature"
-				"classpath:resources/certificate.feature"}
+				"classpath:resources/invoice.feature"}
 )
 
 public class CucumberRunner {
