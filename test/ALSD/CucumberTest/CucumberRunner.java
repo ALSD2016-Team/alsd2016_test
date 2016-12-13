@@ -11,6 +11,7 @@ import cucumber.api.junit.Cucumber;
 		monochrome = true,
 		features = {
 				//"classpath:resources/story.feature",
+				//"classpath:resources/certificate.feature"
 				"classpath:resources/certificate.feature"}
 )
 
