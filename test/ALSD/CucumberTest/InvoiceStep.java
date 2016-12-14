@@ -3,7 +3,6 @@ package ALSD.CucumberTest;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +23,10 @@ public class InvoiceStep {
 
 	@Given("^Open browser and open the application of triplicate uniform invoice$") 
 	public void StartTUIApplication(){
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		// windows
+//		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		// Mac
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		driver = new ChromeDriver();
 		//driver.manage().window().maximize();
 		driver.get("http://localhost:9091/#/others/invoice");
@@ -93,7 +95,6 @@ public class InvoiceStep {
 
 	@Given("^Open browser and open the application of duplicate uniform invoice$") 
 	public void StartDUIApplication() throws InterruptedException{
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		//driver.manage().window().maximize();
 		driver.get("http://localhost:9091/#/others/invoice");

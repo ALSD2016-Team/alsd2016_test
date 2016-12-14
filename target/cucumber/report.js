@@ -16,12 +16,12 @@ formatter.scenario({
 });
 formatter.step({
   "line": 4,
-  "name": "Open browser and start application",
+  "name": "Open browser and open the application of triplicate uniform invoice",
   "keyword": "Given "
 });
 formatter.step({
   "line": 5,
-  "name": "I enter the data into the invoice form",
+  "name": "I enter the data into the form of triplicate uniform invoice",
   "rows": [
     {
       "cells": [
@@ -47,7 +47,7 @@ formatter.step({
     {
       "cells": [
         "taxRate",
-        "6"
+        "5"
       ],
       "line": 10
     },
@@ -84,7 +84,7 @@ formatter.step({
 });
 formatter.step({
   "line": 16,
-  "name": "I click preview button and see the result",
+  "name": "I click preview button and see the result of triplicate uniform invoice",
   "rows": [
     {
       "cells": [
@@ -195,24 +195,198 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "InvoiceStep.StartApplication()"
+  "location": "InvoiceStep.StartTUIApplication()"
 });
 formatter.result({
-  "duration": 2901207068,
+  "duration": 2901155312,
   "status": "passed"
 });
 formatter.match({
-  "location": "InvoiceStep.EnterData(String,String\u003e)"
+  "location": "InvoiceStep.EnterDataToTUI(String,String\u003e)"
 });
 formatter.result({
-  "duration": 4077799807,
+  "duration": 4285716354,
   "status": "passed"
 });
 formatter.match({
-  "location": "InvoiceStep.ClickPreviewButton(String,String\u003e)"
+  "location": "InvoiceStep.ClickTUIPreviewButton(String,String\u003e)"
 });
 formatter.result({
-  "duration": 4319613627,
+  "duration": 3154022522,
+  "status": "passed"
+});
+formatter.scenario({
+  "line": 35,
+  "name": "Duplicate Uniform Invoice",
+  "description": "",
+  "id": "test-invoice-preview;duplicate-uniform-invoice",
+  "type": "scenario",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "line": 36,
+  "name": "Open browser and open the application of duplicate uniform invoice",
+  "keyword": "Given "
+});
+formatter.step({
+  "line": 37,
+  "name": "I enter the data into the form of duplicate uniform invoice",
+  "rows": [
+    {
+      "cells": [
+        "Fields",
+        "Values"
+      ],
+      "line": 39
+    },
+    {
+      "cells": [
+        "companyName",
+        "TeddySoft"
+      ],
+      "line": 40
+    },
+    {
+      "cells": [
+        "itemName",
+        "Education"
+      ],
+      "line": 41
+    },
+    {
+      "cells": [
+        "itemNumber",
+        "2"
+      ],
+      "line": 42
+    },
+    {
+      "cells": [
+        "itemDollar",
+        "9527"
+      ],
+      "line": 43
+    },
+    {
+      "cells": [
+        "date",
+        "2016 �~ 12 �� 10 ��"
+      ],
+      "line": 44
+    }
+  ],
+  "keyword": "When "
+});
+formatter.step({
+  "line": 46,
+  "name": "I click preview button and see the result of duplicate uniform invoice",
+  "rows": [
+    {
+      "cells": [
+        "Fields",
+        "Values"
+      ],
+      "line": 48
+    },
+    {
+      "cells": [
+        "date",
+        "�@ O �� �~ �Q�@�B�Q�G �� ��"
+      ],
+      "line": 49
+    },
+    {
+      "cells": [
+        "companyName",
+        "TeddySoft"
+      ],
+      "line": 50
+    },
+    {
+      "cells": [
+        "year",
+        "105"
+      ],
+      "line": 51
+    },
+    {
+      "cells": [
+        "month",
+        "12"
+      ],
+      "line": 52
+    },
+    {
+      "cells": [
+        "day",
+        "10"
+      ],
+      "line": 53
+    },
+    {
+      "cells": [
+        "itemName",
+        "Education"
+      ],
+      "line": 54
+    },
+    {
+      "cells": [
+        "itemNumber",
+        "2"
+      ],
+      "line": 55
+    },
+    {
+      "cells": [
+        "itemDollar",
+        "9,527"
+      ],
+      "line": 56
+    },
+    {
+      "cells": [
+        "itemTotalDollar",
+        "19,054"
+      ],
+      "line": 57
+    },
+    {
+      "cells": [
+        "totalDollar",
+        "19,054"
+      ],
+      "line": 58
+    },
+    {
+      "cells": [
+        "numberWord",
+        "���h�s��v"
+      ],
+      "line": 59
+    }
+  ],
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "InvoiceStep.StartDUIApplication()"
+});
+formatter.result({
+  "duration": 3362687167,
+  "status": "passed"
+});
+formatter.match({
+  "location": "InvoiceStep.EnterDataToDUI(String,String\u003e)"
+});
+formatter.result({
+  "duration": 2901646259,
+  "status": "passed"
+});
+formatter.match({
+  "location": "InvoiceStep.ClickDUIPreviewButton(String,String\u003e)"
+});
+formatter.result({
+  "duration": 2726483508,
   "status": "passed"
 });
 });
