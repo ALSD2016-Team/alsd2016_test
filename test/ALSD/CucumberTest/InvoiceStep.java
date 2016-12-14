@@ -20,15 +20,17 @@ import cucumber.api.java.en.When;
 public class InvoiceStep {
 	
 	WebDriver driver;
-
+	private static String OS = System.getProperty("os.name").toLowerCase();
+	
 	@Given("^Open browser and open the application of triplicate uniform invoice$") 
 	public void StartTUIApplication(){
-		// windows
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		// Mac
-//		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+
+		if(OS.indexOf("win") >= 0)
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		else
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+		
 		driver = new ChromeDriver();
-		//driver.manage().window().maximize();
 		driver.get("http://localhost:9091/#/others/invoice");
 	}
 
@@ -96,7 +98,6 @@ public class InvoiceStep {
 	@Given("^Open browser and open the application of duplicate uniform invoice$") 
 	public void StartDUIApplication() throws InterruptedException{
 		driver = new ChromeDriver();
-		//driver.manage().window().maximize();
 		driver.get("http://localhost:9091/#/others/invoice");
 		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.id("DUI_button")).click();

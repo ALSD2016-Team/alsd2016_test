@@ -12,7 +12,7 @@
         "steps": [
           {
             "result": {
-              "duration": 2901155312,
+              "duration": 3000446866,
               "status": "passed"
             },
             "line": 4,
@@ -24,7 +24,7 @@
           },
           {
             "result": {
-              "duration": 4285716354,
+              "duration": 4297435378,
               "status": "passed"
             },
             "line": 5,
@@ -50,7 +50,7 @@
               {
                 "cells": [
                   "companyName",
-                  "���}�n���ަ������q"
+                  "泰迪軟體科技有限公司"
                 ],
                 "line": 9
               },
@@ -85,7 +85,7 @@
               {
                 "cells": [
                   "date",
-                  "2016 �~ 12 �� 10 ��"
+                  "2016 年 12 月 10 日"
                 ],
                 "line": 14
               }
@@ -94,7 +94,7 @@
           },
           {
             "result": {
-              "duration": 3154022522,
+              "duration": 3058123217,
               "status": "passed"
             },
             "line": 16,
@@ -113,14 +113,14 @@
               {
                 "cells": [
                   "date",
-                  "�@ O �� �~ �Q�@�B�Q�G �� ��"
+                  "一 O 五 年 十一、十二 月 份"
                 ],
                 "line": 19
               },
               {
                 "cells": [
                   "companyName",
-                  "���}�n���ަ������q"
+                  "泰迪軟體科技有限公司"
                 ],
                 "line": 20
               },
@@ -204,7 +204,7 @@
               {
                 "cells": [
                   "numberWord",
-                  "���s�s�s��"
+                  "壹零零零參"
                 ],
                 "line": 32
               }
@@ -223,7 +223,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3362687167,
+              "duration": 2929118620,
               "status": "passed"
             },
             "line": 36,
@@ -235,7 +235,7 @@
           },
           {
             "result": {
-              "duration": 2901646259,
+              "duration": 2787717002,
               "status": "passed"
             },
             "line": 37,
@@ -282,7 +282,7 @@
               {
                 "cells": [
                   "date",
-                  "2016 �~ 12 �� 10 ��"
+                  "2016 年 12 月 10 日"
                 ],
                 "line": 44
               }
@@ -291,7 +291,7 @@
           },
           {
             "result": {
-              "duration": 2726483508,
+              "duration": 2685256963,
               "status": "passed"
             },
             "line": 46,
@@ -310,7 +310,7 @@
               {
                 "cells": [
                   "date",
-                  "�@ O �� �~ �Q�@�B�Q�G �� ��"
+                  "一 O 五 年 十一、十二 月 份"
                 ],
                 "line": 49
               },
@@ -380,7 +380,7 @@
               {
                 "cells": [
                   "numberWord",
-                  "���h�s��v"
+                  "壹玖零伍肆"
                 ],
                 "line": 59
               }

@@ -40,7 +40,7 @@ formatter.step({
     {
       "cells": [
         "companyName",
-        "���}�n���ަ������q"
+        "泰迪軟體科技有限公司"
       ],
       "line": 9
     },
@@ -75,7 +75,7 @@ formatter.step({
     {
       "cells": [
         "date",
-        "2016 �~ 12 �� 10 ��"
+        "2016 年 12 月 10 日"
       ],
       "line": 14
     }
@@ -96,14 +96,14 @@ formatter.step({
     {
       "cells": [
         "date",
-        "�@ O �� �~ �Q�@�B�Q�G �� ��"
+        "一 O 五 年 十一、十二 月 份"
       ],
       "line": 19
     },
     {
       "cells": [
         "companyName",
-        "���}�n���ަ������q"
+        "泰迪軟體科技有限公司"
       ],
       "line": 20
     },
@@ -187,7 +187,7 @@ formatter.step({
     {
       "cells": [
         "numberWord",
-        "���s�s�s��"
+        "壹零零零參"
       ],
       "line": 32
     }
@@ -198,21 +198,21 @@ formatter.match({
   "location": "InvoiceStep.StartTUIApplication()"
 });
 formatter.result({
-  "duration": 2901155312,
+  "duration": 3000446866,
   "status": "passed"
 });
 formatter.match({
   "location": "InvoiceStep.EnterDataToTUI(String,String\u003e)"
 });
 formatter.result({
-  "duration": 4285716354,
+  "duration": 4297435378,
   "status": "passed"
 });
 formatter.match({
   "location": "InvoiceStep.ClickTUIPreviewButton(String,String\u003e)"
 });
 formatter.result({
-  "duration": 3154022522,
+  "duration": 3058123217,
   "status": "passed"
 });
 formatter.scenario({
@@ -270,7 +270,7 @@ formatter.step({
     {
       "cells": [
         "date",
-        "2016 �~ 12 �� 10 ��"
+        "2016 年 12 月 10 日"
       ],
       "line": 44
     }
@@ -291,7 +291,7 @@ formatter.step({
     {
       "cells": [
         "date",
-        "�@ O �� �~ �Q�@�B�Q�G �� ��"
+        "一 O 五 年 十一、十二 月 份"
       ],
       "line": 49
     },
@@ -361,7 +361,7 @@ formatter.step({
     {
       "cells": [
         "numberWord",
-        "���h�s��v"
+        "壹玖零伍肆"
       ],
       "line": 59
     }
@@ -372,21 +372,21 @@ formatter.match({
   "location": "InvoiceStep.StartDUIApplication()"
 });
 formatter.result({
-  "duration": 3362687167,
+  "duration": 2929118620,
   "status": "passed"
 });
 formatter.match({
   "location": "InvoiceStep.EnterDataToDUI(String,String\u003e)"
 });
 formatter.result({
-  "duration": 2901646259,
+  "duration": 2787717002,
   "status": "passed"
 });
 formatter.match({
   "location": "InvoiceStep.ClickDUIPreviewButton(String,String\u003e)"
 });
 formatter.result({
-  "duration": 2726483508,
+  "duration": 2685256963,
   "status": "passed"
 });
 });
