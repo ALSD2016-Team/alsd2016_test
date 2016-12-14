@@ -24,9 +24,9 @@ public class InvoiceStep {
 	@Given("^Open browser and open the application of triplicate uniform invoice$") 
 	public void StartTUIApplication(){
 		// windows
-//		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		// Mac
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+//		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		driver = new ChromeDriver();
 		//driver.manage().window().maximize();
 		driver.get("http://localhost:9091/#/others/invoice");
@@ -45,11 +45,11 @@ public class InvoiceStep {
 		
 		driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
 		driver.findElement(By.id("dateInput")).clear();
-		driver.findElement(By.id("dateInput")).sendKeys("2016 年 12 月 10 日");
+		driver.findElement(By.id("dateInput")).sendKeys(dataList.get("date"));
 		
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement textbox = driver.findElement(By.id("companyName"));
-		wait.until(ExpectedConditions.attributeContains(textbox, "value", "泰迪軟體科技有限公司"));
+		wait.until(ExpectedConditions.attributeContains(textbox, "value", dataList.get("companyName")));
 		driver.findElement(By.id("button-preview")).click();
 		
 	}
@@ -58,9 +58,9 @@ public class InvoiceStep {
 	public void ClickTUIPreviewButton(Map<String, String> dataList) throws Throwable {
 	    
 		TimeUnit.SECONDS.sleep(2);
-
-		assertEquals("一 O 五 年 十一、十二 月 份", driver.findElement(By.id("result_date")).getText());
-		assertEquals("泰迪軟體科技有限公司", driver.findElement(By.id("result_company")).getText());
+		
+		assertEquals(dataList.get("date"), driver.findElement(By.id("result_date")).getText());
+		assertEquals(dataList.get("companyName"), driver.findElement(By.id("result_company")).getText());
 		
 		String companyId = driver.findElement(By.id("result_compony_id_0")).getText() +
 				driver.findElement(By.id("result_compony_id_1")).getText() + 
@@ -89,7 +89,7 @@ public class InvoiceStep {
 				driver.findElement(By.id("result_number_word_7")).getText() +
 				driver.findElement(By.id("result_number_word_8")).getText() ;
 		
-		assertEquals("壹零零零參", numberWord);
+		assertEquals(dataList.get("numberWord"), numberWord);
 		driver.quit();
 	}
 
@@ -119,7 +119,7 @@ public class InvoiceStep {
 		driver.findElement(By.id("DUI_itemDollar")).sendKeys(dataList.get("itemDollar"));
 
 		driver.findElement(By.id("DUI_dateInput")).clear();
-		driver.findElement(By.id("DUI_dateInput")).sendKeys("2016 年 12 月 10 日");
+		driver.findElement(By.id("DUI_dateInput")).sendKeys(dataList.get("date"));
 		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.id("DUI_previewButton")).click();
 		
@@ -130,7 +130,7 @@ public class InvoiceStep {
 	    
 		TimeUnit.SECONDS.sleep(2);
 		
-		assertEquals("一 O 五 年 十一、十二 月 份", driver.findElement(By.id("DUI_result_date")).getText());
+		assertEquals(dataList.get("date"), driver.findElement(By.id("DUI_result_date")).getText());
 		assertEquals(dataList.get("companyName"), driver.findElement(By.id("DUI_result_companyName")).getText());
 
 		assertEquals(dataList.get("year"), driver.findElement(By.id("DUI_result_year")).getText());
@@ -149,7 +149,7 @@ public class InvoiceStep {
 				driver.findElement(By.id("DUI_result_numberWord_7")).getText() +
 				driver.findElement(By.id("DUI_result_numberWord_8")).getText() ;
 		
-		assertEquals("壹玖零伍肆", numberWord);
+		assertEquals(dataList.get("numberWord"), numberWord);
 		driver.quit();
 	}
 }

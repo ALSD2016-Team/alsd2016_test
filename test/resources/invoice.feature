@@ -6,18 +6,18 @@ Feature: Test invoice preview
 		
 		| Fields                 | Values              |
 		| componyId              | 53909614            |
-		| companyName            | ®õ­}³nÅé¬ì§Ş¦³­­¤½¥q    	   |
+		| companyName            | æ³°è¿ªè»Ÿé«”ç§‘æŠ€æœ‰é™å…¬å¸    	   |
 		| taxRate                | 5                   |
 		| itemName               | Education           |
 		| itemNumber             | 1                   |
 		| itemDollar             | 9527                |
-		| date                   | 2016 ¦~ 12 ¤ë 10 ¤é                       |
+		| date                   | 2016 å¹´ 12 æœˆ 10 æ—¥                        |
 
 		Then I click preview button and see the result of triplicate uniform invoice
 		
 		| Fields                 | Values              |
-		| date             		 | ¤@ O ¤­ ¦~ ¤Q¤@¡B¤Q¤G ¤ë ¥÷             |
-		| companyName            | ®õ­}³nÅé¬ì§Ş¦³­­¤½¥q                         |
+		| date             		 | ä¸€ O äº” å¹´ åä¸€ã€åäºŒ æœˆ ä»½             |
+		| companyName            | æ³°è¿ªè»Ÿé«”ç§‘æŠ€æœ‰é™å…¬å¸                         |
 		| companyId              | 53909614            |
 		| year                   | 105                 |
 		| month                  | 12                  |
@@ -29,7 +29,7 @@ Feature: Test invoice preview
 		| salesDollar            | 9,527               |
 		| businessTax            | 476                 |
 		| totalDollar            | 10003               |
-		| numberWord             | ³ü¹s¹s¹s°Ñ	           |
+		| numberWord             | å£¹é›¶é›¶é›¶åƒ	           |
 		
 	
 	Scenario: Duplicate Uniform Invoice
@@ -41,12 +41,12 @@ Feature: Test invoice preview
 		| itemName               | Education           |
 		| itemNumber             | 2                   |
 		| itemDollar             | 9527                |
-		| date                   | 2016 ¦~ 12 ¤ë 10 ¤é                       |
+		| date                   | 2016 å¹´ 12 æœˆ 10 æ—¥                        |
 
 		Then I click preview button and see the result of duplicate uniform invoice
 		
 		| Fields                 | Values              |
-		| date             		 | ¤@ O ¤­ ¦~ ¤Q¤@¡B¤Q¤G ¤ë ¥÷             |
+		| date             		 | ä¸€ O äº” å¹´ åä¸€ã€åäºŒ æœˆ ä»½             |
 		| companyName            | TeddySoft           |
 		| year                   | 105                 |
 		| month                  | 12                  |
@@ -56,4 +56,4 @@ Feature: Test invoice preview
 		| itemDollar             | 9,527               |
 		| itemTotalDollar        | 19,054	           |
 		| totalDollar            | 19,054              |
-		| numberWord             | ³ü¨h¹s¥î¸v	           |
+		| numberWord             | å£¹ç–é›¶ä¼è‚†	           |
