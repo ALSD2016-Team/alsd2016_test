@@ -29,7 +29,7 @@ public class CertificateFrontEndStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/SLM2016/");
+		driver.get("http://localhost:8080/Certification/");
 	}
 
 	@When("^I enter the data into the form of certificate generator$")

@@ -98,7 +98,7 @@ public class InvoiceStep {
 	@Given("^Open browser and open the application of duplicate uniform invoice$") 
 	public void StartDUIApplication() throws InterruptedException{
 		driver = new ChromeDriver();
-		driver.get("http://localhost:9091/#/others/invoice");
+		driver.get("http://140.124.181.126:9091/#/others/invoice");
 		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.id("DUI_button")).click();
 	}
