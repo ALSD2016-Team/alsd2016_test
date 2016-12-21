@@ -35,7 +35,7 @@ public class CertificateFrontEndStep {
 	@When("^I enter the data into the form of certificate generator$")
 	public void EnterDataToTUI(Map<String, String> dataList) throws InterruptedException {
 		
-		TimeUnit.SECONDS.sleep(1);
+		TimeUnit.SECONDS.sleep(5);
 		driver.findElement(By.id("certificationId")).clear();
 		driver.findElement(By.id("certificationId")).sendKeys(dataList.get("certificationId"));
 		driver.findElement(By.id("studentName")).clear();
