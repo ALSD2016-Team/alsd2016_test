@@ -29,13 +29,13 @@ public class CertificateFrontEndStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/Certification/");
+		driver.get("http://localhost:9090/Certification/");
 	}
 
 	@When("^I enter the data into the form of certificate generator$")
 	public void EnterDataToTUI(Map<String, String> dataList) throws InterruptedException {
 		
-		TimeUnit.SECONDS.sleep(5);
+		TimeUnit.SECONDS.sleep(1);
 		driver.findElement(By.id("certificationId")).clear();
 		driver.findElement(By.id("certificationId")).sendKeys(dataList.get("certificationId"));
 		driver.findElement(By.id("studentName")).clear();
