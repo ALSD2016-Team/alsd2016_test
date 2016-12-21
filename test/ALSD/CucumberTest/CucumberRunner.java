@@ -12,7 +12,8 @@ import cucumber.api.junit.Cucumber;
 		features = {
 				"classpath:resources/certificate.feature",
 				"classpath:resources/invoice.feature",
-				"classpath:resources/certificate_frontend.feature"
+				"classpath:resources/certificate_frontend.feature",
+				"classpath:resources/sendMail.feature"
 				}
 )
 
