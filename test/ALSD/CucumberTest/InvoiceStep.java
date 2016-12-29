@@ -31,7 +31,7 @@ public class InvoiceStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:9091/#/others/invoice");
+		driver.get("http://140.124.181.126:9091/#/others/invoice");
 	}
 
 	@When("^I enter the data into the form of triplicate uniform invoice$")

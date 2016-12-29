@@ -2,14 +2,26 @@ package ALSD.CucumberTest;
 
 import static org.junit.Assert.assertEquals;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Base64;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.gargoylesoftware.htmlunit.javascript.host.Console;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -29,7 +41,8 @@ public class CertificateFrontEndStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:9090/Certification/");
+		driver.get("http://140.124.181.126:9090/Certification/");
+		//driver.get("http://localhost:8080/Certification/");
 	}
 
 	@When("^I enter the data into the form of certificate generator$")
@@ -55,14 +68,39 @@ public class CertificateFrontEndStep {
 		
 	}
 
-	@Then("^I click generate button and see the result of certificate generator$")
-	public void ClickTUIPreviewButton(Map<String, String> dataList) throws Throwable {
+	@Then("^I click generate button and get a correct certificate$")
+	public void ClickTUIPreviewButton() throws Throwable {
 	    
 		TimeUnit.SECONDS.sleep(2);
 		//check image is displayed
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("someImg")));
 		assertEquals(true, driver.findElement(By.id("someImg")).isDisplayed());
+
+		String inputBase64BackgroundImage = driver.findElement(By.id("someImg")).getAttribute("src") ;
+
+		try {
+			BufferedImage  backgroundImage = ImageIO.read(new File("./image/backgroundImage.png")); 
+	        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	        
+	        /*Encode image to base64 string*/
+	        try {
+	            ImageIO.write(backgroundImage, "png", bos);
+	            byte[] imageBytes = bos.toByteArray();
+	            
+	            String sampleBase64BackgroundImage = "data:image/png;base64," + Base64.getEncoder().encodeToString(imageBytes);
+	            assertEquals(sampleBase64BackgroundImage, inputBase64BackgroundImage);
+	            
+	            bos.close();
+	            
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        
+		}catch (IOException e) {
+		    e.printStackTrace();
+		}
+			
 		
 		driver.quit();
 	}

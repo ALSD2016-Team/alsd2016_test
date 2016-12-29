@@ -13,20 +13,5 @@ Feature: Test certificate application
 		| certificationDate      | 2016 年 4 月 23 日                					|
 
 
-		Then I click generate button and see the result of certificate generator
+		Then I click generate button and get a correct certificate
 		
-		| Fields                 | Values              |
-		| date             		 | 一 O 五 年 十一、十二 月 份             |
-		| companyName            | 泰迪軟體科技有限公司                         |
-		| companyId              | 53909614            |
-		| year                   | 105                 |
-		| month                  | 12                  |
-		| day                    | 10                  |
-		| itemName               | Education           |
-		| itemCount              | 1                   |
-		| itemDollar             | 9,527               |
-		| itemTotalDollar        | 9,527               |
-		| salesDollar            | 9,527               |
-		| businessTax            | 476                 |
-		| totalDollar            | 10003               |
-		| numberWord             | 壹零零零參	           |
