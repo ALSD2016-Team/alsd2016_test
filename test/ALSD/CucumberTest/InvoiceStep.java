@@ -153,4 +153,26 @@ public class InvoiceStep {
 		assertEquals(dataList.get("numberWord"), numberWord);
 		driver.quit();
 	}
+	
+	//Scenario: Enter Wrong componyId format
+	@Given("^Open browser and open the application of Enter Wrong componyId format$") 
+	public void StartWrongCompanyIdApplication() throws InterruptedException{
+		driver = new ChromeDriver();
+		driver.get("http://140.124.181.126:9091/#/others/invoice");
+		TimeUnit.SECONDS.sleep(1);
+	}
+	
+	@When("^I enter the wrong format Data into componyId input$")
+	public void EnterDataToWrongIdUI(Map<String, String> dataList) throws InterruptedException {
+		driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
+	}
+	
+	@Then("^isCompanyIdError message show$")
+	public void isCompanyIdErrorMmessageShow(Map<String, String> dataList) throws Throwable {
+		WebDriverWait wait = new WebDriverWait(driver, 5);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("is-company-id-error-message")));
+		assertEquals(dataList.get("displayShow"), driver.findElement(By.id("is-company-id-error-message")).getCssValue("display"));
+		driver.quit();
+	}
+	
 }

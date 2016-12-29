@@ -57,3 +57,16 @@ Feature: Test invoice preview
 		| itemTotalDollar        | 19,054	           |
 		| totalDollar            | 19,054              |
 		| numberWord             | 壹玖零伍肆	           |
+
+		
+	Scenario: Enter Wrong componyId format
+		Given Open browser and open the application of Enter Wrong componyId format
+		When I enter the wrong format Data into componyId input
+		| Fields                 | Values              |
+		| componyId              | asdfasdf            |
+		
+		Then isCompanyIdError message show
+		
+		| displayShow            | inline              |
+		
+		
