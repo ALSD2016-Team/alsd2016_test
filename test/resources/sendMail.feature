@@ -18,3 +18,19 @@ Feature: Test sendMail application
 		Then I will get successful message on alert
 		| Fields                 | Values |
 		| alertMsg               | 寄送email結束. |
+		
+	Scenario: Send email app Select no course 
+		Given Enter sendMail application and do not select course name
+		When I click generate button and send button   
+		Then It will be disabled
+		| Fields                 | Values |
+		| disabled               | true   |
+		
+	Scenario: Send email app Select course but select no student  
+		Given Enter sendMail application and select course name and uncheck student
+		| Fields                 | Values        |
+		| courseName             | SendMailTest  |
+		When I click send mail button   
+		Then It will tell me should choose student
+		| Fields                 | Values |
+		| alertMsg               | Please choose Recipient!! |

@@ -30,7 +30,7 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:9092/sendMail/#/");
+		driver.get("http://localhost:8080/sendMail/#/");
 		
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
@@ -86,4 +86,63 @@ public class sendMailStep {
 		driver.quit();
 	}
 	
+	//Scenario: Send email select no course
+	@Given("^Enter sendMail application and do not select course name$") 
+	public void StartSendMailAppSelectNoCourse() throws InterruptedException {
+		if(OS.indexOf("win") >= 0)
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		else
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+		
+		driver = new ChromeDriver();
+		driver.get("http://localhost:8080/sendMail/#/");
+	}
+	@When("^I click generate button and send button$")
+	public void ClickGenerateBtnandSendBtn() throws InterruptedException {
+		driver.findElement(By.id("preview_submit")).click();
+		driver.findElement(By.id("send_submit")).click();
+	}
+
+	@Then("^It will be disabled$")
+	public void CheckDisabled(Map<String, String> dataList) throws Throwable {
+		assertEquals(dataList.get("disabled") , driver.findElement(By.id("preview_submit")).getAttribute("disabled"));
+		assertEquals(dataList.get("disabled") , driver.findElement(By.id("send_submit")).getAttribute("disabled"));
+		
+		driver.quit();
+	}
+	
+	//Scenario: Send email app Select course but select no student
+	@Given("^Enter sendMail application and select course name and uncheck student$") 
+	public void StartSendMailAppSelectNoStudent(Map<String, String> dataList) throws InterruptedException {
+		if(OS.indexOf("win") >= 0)
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		else
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
+		
+		driver = new ChromeDriver();
+		driver.get("http://localhost:8080/sendMail/#/");
+		
+		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
+		
+		driver.findElement(By.id("ccCheckbox_0")).click();
+		driver.findElement(By.id("ccCheckbox_1")).click();
+		driver.findElement(By.id("ccCheckbox_2")).click();
+		driver.findElement(By.name("checkbox_name")).click();
+		driver.findElement(By.id("preview_submit")).click();
+	}
+	@When("^I click send mail button$")
+	public void ClickSendButton() throws InterruptedException {
+		driver.findElement(By.id("send_submit")).click();
+		TimeUnit.SECONDS.sleep(1);
+		driver.switchTo().alert().accept();
+	}
+
+	@Then("^It will tell me should choose student$")
+	public void CheckAlert(Map<String, String> dataList) throws Throwable {
+		assertEquals(dataList.get("alertMsg") , driver.switchTo().alert().getText());
+		TimeUnit.SECONDS.sleep(1);
+		driver.switchTo().alert().accept();
+		
+		driver.quit();
+	}
 }
