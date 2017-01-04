@@ -20,8 +20,8 @@ public class send_Mail_Step {
 	
 	WebDriver driver;
 	private static String OS = System.getProperty("os.name").toLowerCase();
-//	private static String location = "http://140.124.181.126:9003/sendMail/";
-	private static String location = "http://localhost:9003/sendMail/";
+	private static String location = "http://140.124.181.126:9003/sendMail/";
+//	private static String location = "http://localhost:9003/sendMail/";
 	private static String host = "pop.gmail.com";
 	private static String mailStoreType = "pop3";
 	private static String username = "ntutalsd1221@gmail.com";

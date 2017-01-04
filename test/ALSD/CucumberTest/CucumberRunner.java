@@ -10,10 +10,13 @@ import cucumber.api.junit.Cucumber;
 		plugin = { "pretty", "html:target/cucumber", "json:target/cucumber.json"},
 		monochrome = true,
 		features = {
-				"classpath:resources/invoice.feature",
-				"classpath:resources/certificate_frontend.feature",
-				"classpath:resources/sendMail.feature"
-				}
+				"classpath:resources/"
+		}
+//		features = {
+//				"classpath:resources/invoice.feature",
+//				"classpath:resources/sendMail.feature",
+//				"classpath:resources/certificate_frontend.feature"
+//		}
 )
 
 public class CucumberRunner {
