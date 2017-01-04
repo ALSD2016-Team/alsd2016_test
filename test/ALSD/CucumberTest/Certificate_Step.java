@@ -32,7 +32,7 @@ public class Certificate_Step {
 	
 	@Given("^I prepare courseInfo and studentsInfo for generate certificates$") 
 	public void PrepareData(Map<String, String> dataList)  {
-		
+		 
 		System.out.print(dataList.get("courseName"));
 		/*Prepare students info*/
 //		try {

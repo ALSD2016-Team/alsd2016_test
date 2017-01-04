@@ -30,7 +30,7 @@ public class Invoice_Step {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://140.124.181.126:9001/#/others/invoice");
+		driver.get("http://140.124.181.126:9001/#/others/invoice"); 
 		//driver.get("http://localhost:9001/");
 	}
 
