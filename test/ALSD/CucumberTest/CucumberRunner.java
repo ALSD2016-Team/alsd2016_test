@@ -9,8 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		plugin = { "pretty", "html:target/cucumber", "json:target/cucumber.json"},
 		monochrome = true,
-		features = {
-				"classpath:resources/invoice.feature",				
+		features = {				
+//"classpath:resources/invoice.feature",				
 //				"classpath:resources/certificate_frontend.feature",				
 //				"classpath:resources/sendMail.feature"
 				}
