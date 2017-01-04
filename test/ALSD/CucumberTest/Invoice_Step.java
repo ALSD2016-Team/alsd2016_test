@@ -16,7 +16,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class InvoiceStep {
+public class Invoice_Step {
 	
 	WebDriver driver;
 	private static String OS = System.getProperty("os.name").toLowerCase();
@@ -347,7 +347,7 @@ public class InvoiceStep {
 				@Then("^I will see error notification of item dollar field and total dollar field$")
 				public void I_will_see_error_notification_of_item_dollar_field_and_total_dollar_field(Map<String, String> dataList) throws Throwable {
 
-					TimeUnit.SECONDS.sleep(2);
+					TimeUnit.SECONDS.sleep(3);
 					try {
 						assertEquals(dataList.get("itemDollarColor"), driver.findElement(By.id("DUI_itemDollar")).getCssValue("border-color"));
 						assertEquals(dataList.get("totalDollarColor"), driver.findElement(By.id("total-dollar")).getCssValue("border-color"));
