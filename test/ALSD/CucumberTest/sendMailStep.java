@@ -197,7 +197,6 @@ public class sendMailStep {
 		assertEquals(dataList.get("alertMsg") , driver.switchTo().alert().getText());
 		TimeUnit.SECONDS.sleep(1);
 		driver.switchTo().alert().accept();
-		
 		driver.quit();
 	}
 }
