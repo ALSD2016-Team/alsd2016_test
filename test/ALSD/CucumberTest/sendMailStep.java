@@ -2,6 +2,9 @@ package ALSD.CucumberTest;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -20,8 +23,12 @@ public class sendMailStep {
 	
 	WebDriver driver;
 	private static String OS = System.getProperty("os.name").toLowerCase();
+	private static String host = "pop.gmail.com";
+	private static String mailStoreType = "pop3";
+	private static String username = "ntutalsd1221@gmail.com";
+	private static String password = "alsd2016";
 	
-	//Scenario: Preview email content 
+	//Scenario: When_ClickGenerateBtn_Expect_CorrectMailContent
 	@Given("^Enter sendMail application and select course$") 
 	public void StartSendMailApp(Map<String, String> dataList) throws InterruptedException {
 		if(OS.indexOf("win") >= 0)
@@ -53,9 +60,9 @@ public class sendMailStep {
 		driver.quit();
 	}
 	
-	//Scenario: Send email to student
-	@Given("^Enter sendMail application after check mail content was right$") 
-	public void StartSendMailAppTwice(Map<String, String> dataList) throws InterruptedException {
+	//Scenario: When_ClickSendBtn_Expect_SuccessfulAlert
+	@Given("^Enter sendMail application and check mail content was right$") 
+	public void StartSendMailAppandCheck(Map<String, String> dataList) throws InterruptedException {
 		if(OS.indexOf("win") >= 0)
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		else
@@ -72,23 +79,43 @@ public class sendMailStep {
 		driver.findElement(By.id("preview_submit")).click();
 	}
 	@When("^I click send button and check to send$")
-	public void ClickSendBtn() throws InterruptedException {
+	public void ClickSendBtn() throws InterruptedException {		
+		//delete all mail
+	    ReceiveMail.delete(host, mailStoreType, username, password);
+		
 		driver.findElement(By.id("send_submit")).click();
 		driver.switchTo().alert().accept();
 	}
 
 	@Then("^I will get successful message on alert$")
-	public void CheckSucMsg(Map<String, String> dataList) throws Throwable {
+	public void CheckSuccessfulMsg(Map<String, String> dataList) throws Throwable {
 		TimeUnit.SECONDS.sleep(5);
 		assertEquals(dataList.get("alertMsg") , driver.switchTo().alert().getText());
-		driver.switchTo().alert().accept();
-		
+		driver.switchTo().alert().accept();		
 		driver.quit();
 	}
 	
-	//Scenario: Send email select no course
+	//Scenario: When_ClickSendBtn_Expect_GetEmail
+	@Then("^I can get a mail from teddysoft$")
+	public void CheckEmailfromTeddysoft(Map<String, String> dataList) throws Throwable {
+		TimeUnit.SECONDS.sleep(5);
+		driver.switchTo().alert().accept();			
+
+		String[] mail = ReceiveMail.check(host, mailStoreType, username, password);
+		assertEquals(dataList.get("subject") , mail[0]);
+		assertEquals(dataList.get("from") , mail[1]);
+		
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+	    Date date = Calendar.getInstance().getTime();
+	    String dateNow = sdFormat.format(date);
+	    assertEquals(dateNow , mail[2]);
+	    
+		driver.quit();
+	}
+	
+	//Scenario: When_NotSelectCourse_Expect_SuccessfulAlert 
 	@Given("^Enter sendMail application and do not select course name$") 
-	public void StartSendMailAppSelectNoCourse() throws InterruptedException {
+	public void StartSendMailAppandNotSelectCourse() throws InterruptedException {
 		if(OS.indexOf("win") >= 0)
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		else
@@ -111,9 +138,9 @@ public class sendMailStep {
 		driver.quit();
 	}
 	
-	//Scenario: Send email app Select course but select no student
+	//Scenario: When_NotSelectStudent_Expect_NeedChooseStudentAlert  
 	@Given("^Enter sendMail application and select course name and uncheck student$") 
-	public void StartSendMailAppSelectNoStudent(Map<String, String> dataList) throws InterruptedException {
+	public void StartSendMailAppandNotSelectStudent(Map<String, String> dataList) throws InterruptedException {
 		if(OS.indexOf("win") >= 0)
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		else
@@ -138,7 +165,7 @@ public class sendMailStep {
 	}
 
 	@Then("^It will tell me should choose student$")
-	public void CheckAlert(Map<String, String> dataList) throws Throwable {
+	public void CheckChooseStudentAlert(Map<String, String> dataList) throws Throwable {
 		assertEquals(dataList.get("alertMsg") , driver.switchTo().alert().getText());
 		TimeUnit.SECONDS.sleep(1);
 		driver.switchTo().alert().accept();

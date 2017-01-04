@@ -5,8 +5,7 @@ import org.junit.runner.JUnitCore;
 public class Main {
 
 	public static void main(String[] args) {
-		JUnitCore.runClasses(CucumberRunner.class);
-		
+		JUnitCore.runClasses(CucumberRunner.class);		
 	}
 
 }
