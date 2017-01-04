@@ -31,8 +31,8 @@ public class InvoiceStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		//driver.get("http://140.124.181.126:9091/#/others/invoice");
-		driver.get("http://localhost:9091/#/others/invoice");
+		driver.get("http://140.124.181.126:9091/#/others/invoice");
+//		driver.get("http://localhost:9091/#/others/invoice");
 	}
 
 	@When("^I enter the CorrectData into the form of triplicate uniform invoice$")
@@ -46,13 +46,15 @@ public class InvoiceStep {
 		driver.findElement(By.id("TUI_itemDollar")).sendKeys(dataList.get("itemDollar"));
 		TimeUnit.SECONDS.sleep(1);
 		
-		driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
+		driver.findElement(By.id("companyid")).sendKeys(dataList.get("companyId"));
 		driver.findElement(By.id("dateInput")).clear();
 		driver.findElement(By.id("dateInput")).sendKeys(dataList.get("date"));
 		
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		WebElement textbox = driver.findElement(By.id("companyName"));
 		wait.until(ExpectedConditions.attributeContains(textbox, "value", dataList.get("companyName")));
+		TimeUnit.SECONDS.sleep(1);
+		
 		driver.findElement(By.id("button-preview")).click();
 		
 	}
@@ -94,48 +96,40 @@ public class InvoiceStep {
 				driver.findElement(By.id("result_number_word_7")).getText() +
 				driver.findElement(By.id("result_number_word_8")).getText() ;
 		
+		assertEquals(dataList.get("numberWord"), numberWord);
+		
 	
 		TimeUnit.SECONDS.sleep(1);
-		assertEquals(dataList.get("numberWord"), numberWord);
         driver.quit();
+	
 		
 	}
 	
 	
-	//Scenario: Enter Wrong componyId format
-	@Given("^Open browser and open the application of Enter Wrong componyId format$") 
-	public void StartWrongCompanyIdApplication() throws InterruptedException{
-		driver = new ChromeDriver();
-//		driver.get("http://140.124.181.126:9091/#/others/invoice");
-		driver.get("http://localhost:9091/#/others/invoice");
-		TimeUnit.SECONDS.sleep(1);
-	}
+	//Scenario: Enter Wrong companyId format
 	
-	@When("^I enter the wrong format Data into componyId input$")
+	@When("^I enter the wrong format Data into companyId input$")
 	public void EnterDataToWrongIdUI(Map<String, String> dataList) throws InterruptedException {
-		driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
+		TimeUnit.SECONDS.sleep(2);
+		driver.findElement(By.id("companyid")).sendKeys(dataList.get("companyId"));
 	}
 	
 	@Then("^isCompanyIdError message show$")
 	public void isCompanyIdErrorMmessageShow(Map<String, String> dataList) throws Throwable {
 		WebDriverWait wait = new WebDriverWait(driver, 5);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("is-company-id-error-message")));
-		try
-        {
-			TimeUnit.SECONDS.sleep(1);
-			assertEquals(dataList.get("displayShow"), driver.findElement(By.id("is-company-id-error-message")).getCssValue("display"));
-         }
-        finally {
-            driver.quit();
-        }
 		
+		TimeUnit.SECONDS.sleep(1);
+		assertEquals(dataList.get("displayShow"), driver.findElement(By.id("is-company-id-error-message")).getCssValue("display"));
+        
+        driver.quit();	
 	}
 	
-	//Scenario: When_HasNotEnterComponyIdInTriplicateUniform_Expect_InvoicePreviewDontShow
-		//@Given("^Open browser and open the application of triplicate uniform invoice$") 
+	//Scenario: When_HasNotEntercompanyIdInTriplicateUniform_Expect_InvoicePreviewDontShow
+//		@Given("^Open browser and open the application of triplicate uniform invoice$") 
 		
-		@When("^I Has not enter componyId into componyId input$")
-		public void HasNotEnterComponyIdFormatInTriplicateUniformI(Map<String, String> dataList) throws InterruptedException {
+		@When("^I Has not enter companyId into comaonyId input$")
+		public void HasNotEntercompanyIdFormatInTriplicateUniformI(Map<String, String> dataList) throws InterruptedException {
 			TimeUnit.SECONDS.sleep(1);
 			driver.findElement(By.id("TUI_itemName")).clear();
 			driver.findElement(By.id("TUI_itemName")).sendKeys(dataList.get("itemName"));
@@ -144,54 +138,51 @@ public class InvoiceStep {
 			driver.findElement(By.id("TUI_itemDollar")).sendKeys(dataList.get("itemDollar"));
 			TimeUnit.SECONDS.sleep(1);
 			
-			driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
 			driver.findElement(By.id("dateInput")).clear();
 			driver.findElement(By.id("dateInput")).sendKeys(dataList.get("date"));
 			
 			WebDriverWait wait = new WebDriverWait(driver, 5);
-			WebElement textbox = driver.findElement(By.id("companyName"));
+			
+			TimeUnit.SECONDS.sleep(3);
+			driver.findElement(By.id("button-preview")).click();
 		}
 		
-		@Then("^Invoice Preview don't show and componyId,companyName input color to red$")
-		public void InvoicePreviewDontShowAndComponyIdCompanyNameInputColorToRed(Map<String, String> dataList) throws Throwable {
-			driver.findElement(By.id("button-preview")).click();
-			try
-	        {
-				TimeUnit.SECONDS.sleep(1);
-				assertEquals(dataList.get("visibility"), driver.findElement(By.id("invoice-result")).getCssValue("visibility"));
-				WebDriverWait wait = new WebDriverWait(driver, 5);
-				assertEquals(dataList.get("componyIdColor"), driver.findElement(By.id("companyid")).getCssValue("border-color"));
-				assertEquals(dataList.get("companyNameColor"), driver.findElement(By.id("companyName")).getCssValue("border-color"));
-	         }
-	        finally {
-	            driver.quit();
-	        }
+		@Then("^Invoice Preview don't show and companyId,companyName input color to red$")
+		public void InvoicePreviewDontShowAndcompanyIdCompanyNameInputColorToRed(Map<String, String> dataList) throws Throwable {
+			
+			TimeUnit.SECONDS.sleep(5);
+			assertEquals(dataList.get("visibility"), driver.findElement(By.id("invoice-result")).getCssValue("visibility"));
+			assertEquals(dataList.get("companyIdColor"), driver.findElement(By.id("companyid")).getCssValue("border-color"));
+			assertEquals(dataList.get("companyNameColor"), driver.findElement(By.id("companyName")).getCssValue("border-color"));
+         
+            driver.quit();
+	        
 		}
 		
 		//Scenario: When_HasNotEnterItemDollarInTriplicateUniform_Expect_InvoicePreviewDontShow
 				//@Given("^Open browser and open the application of triplicate uniform invoice$") 
 				
-				@When("^I Has not enter ItemDollar into componyId input$")
+				@When("^I Has not enter ItemDollar into companyId input$")
 				public void HasNotEnterItemDollarInTriplicateUniformI(Map<String, String> dataList) throws InterruptedException {
 					TimeUnit.SECONDS.sleep(1);
 					driver.findElement(By.id("TUI_itemName")).clear();
 					driver.findElement(By.id("TUI_itemName")).sendKeys(dataList.get("itemName"));
 					TimeUnit.SECONDS.sleep(1);
-					driver.findElement(By.id("TUI_itemDollar")).clear();
-					driver.findElement(By.id("TUI_itemDollar")).sendKeys(dataList.get("itemDollar"));
-					TimeUnit.SECONDS.sleep(1);
 					
-					driver.findElement(By.id("companyid")).sendKeys(dataList.get("componyId"));
+					
+					driver.findElement(By.id("companyid")).sendKeys(dataList.get("companyId"));
 					driver.findElement(By.id("dateInput")).clear();
 					driver.findElement(By.id("dateInput")).sendKeys(dataList.get("date"));
 					
 					WebDriverWait wait = new WebDriverWait(driver, 5);
 					WebElement textbox = driver.findElement(By.id("companyName"));
+					TimeUnit.SECONDS.sleep(1);
+					driver.findElement(By.id("button-preview")).click();
 				}
 				
 				@Then("^Invoice Preview don't show and TUI_itemDollar,totalDollar,salesDollar input color to red$")
 				public void InvoicePreviewDontShowTUIItemDollarTotalDollarSalesDollarInputToRed (Map<String, String> dataList) throws Throwable {
-					driver.findElement(By.id("button-preview")).click();
+
 					try
 			        {
 						TimeUnit.SECONDS.sleep(1);

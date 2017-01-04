@@ -5,7 +5,7 @@ Feature: Test invoice preview
 		When I enter the CorrectData into the form of triplicate uniform invoice
 		
 		| Fields                 | Values              |
-		| componyId              | 53909614            |
+		| companyId              | 53909614            |
 		| companyName            | 泰迪軟體科技有限公司    	   |
 		| taxRate                | 5                   |
 		| itemName               | Education           |
@@ -32,48 +32,45 @@ Feature: Test invoice preview
 		| numberWord             | 壹零零零參	           |
 		
 		
-	Scenario: When_EnterTheWrongComponyIdFormatInTriplicateUniform_Expect_ShowErrorMessage
+	Scenario: When_EnterTheWrongcompanyIdFormatInTriplicateUniform_Expect_ShowErrorMessage
 		Given Open browser and open the application of triplicate uniform invoice
-		When I enter the wrong format Data into componyId input
+		When I enter the wrong format Data into companyId input
 		| Fields                 | Values              |
-		| componyId              | asdfasdf            |
+		| companyId              | asdfasdf            |
 		
 		Then isCompanyIdError message show
-		
+		| Fields                 | Values              |
 		| displayShow            | inline              |
 		
-	Scenario: When_HasNotEnterComponyIdInTriplicateUniform_Expect_InvoicePreviewDontShow
+	Scenario: When_HasNotEntercompanyIdInTriplicateUniform_Expect_InvoicePreviewDontShow
 		Given Open browser and open the application of triplicate uniform invoice
-		When I Has not enter componyId into componyId input
+		When I Has not enter companyId into comaonyId input
 		| Fields                 | Values              |
-		| componyId              |                     |
-		| companyName            |               	   |
 		| taxRate                | 5                   |
 		| itemName               | Education           |
 		| itemNumber             | 1                   |
 		| itemDollar             | 9527                |
 		| date                   | 2016 年 12 月 10 日                        |
 		
-		Then Invoice Preview don't show and componyId,companyName input color to red
-		
+		Then Invoice Preview don't show and companyId,companyName input color to red
+		| Fields                | Values              |
 		| visibility            | hidden              |
-		| componyIdColor        |        rgb(241, 67, 66)             |
+		| companyIdColor        |        rgb(241, 67, 66)             |
 		| companyNameColor      |        rgb(241, 67, 66)        	 |
 		
 	Scenario: When_HasNotEnterItemDollarInTriplicateUniform_Expect_InvoicePreviewDontShow
 		Given Open browser and open the application of triplicate uniform invoice
-		When I Has not enter ItemDollar into componyId input
+		When I Has not enter ItemDollar into companyId input
 		| Fields                 | Values              |
-		| componyId              | 53909614                    |
+		| companyId              | 53909614                    |
 		| companyName            | 泰迪軟體科技有限公司              	   |
 		| taxRate                | 5                   |
 		| itemName               | Education           |
 		| itemNumber             | 1                   |
-		| itemDollar             |                     |
 		| date                   | 2016 年 12 月 10 日                        |
 		
 		Then Invoice Preview don't show and TUI_itemDollar,totalDollar,salesDollar input color to red
-		
+		| Fields                 | Values              |
 		| visibility            |        hidden                       |
 		| TUI_itemDollarColor   |        rgb(241, 67, 66)             |
 		| totalDollarColor      |        rgb(241, 67, 66)        	  |
