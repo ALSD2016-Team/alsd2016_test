@@ -3,7 +3,7 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ALSD2016-Test">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ALSD2016_test">
     <property environment="env"/>
 <property name="dir.buildfile" value="."/>
 <property name="dir.jarfile" value="${dir.buildfile}"/>
@@ -12,7 +12,7 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
-    <path id="ALSD2016-Test.classpath">
+    <path id="ALSD2016_test.classpath">
         <pathelement location="bin"/>
         <pathelement location="libs/cucumber-core-1.2.5.jar"/>
         <pathelement location="libs/cucumber-java-1.2.5.jar"/>
@@ -75,7 +75,7 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="test"/>
-            <classpath refid="ALSD2016-Test.classpath"/>
+            <classpath refid="ALSD2016_test.classpath"/>
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
@@ -84,13 +84,13 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target name="ALSD2016-Test">
+    <target name="ALSD2016_test">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
             <test name="ALSD.CucumberTest.CucumberRunner" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="ALSD2016-Test.classpath"/>
+            <classpath refid="ALSD2016_test.classpath"/>
         </junit>
     </target>
     <target name="CucumberRunner">
@@ -99,12 +99,12 @@
             <formatter type="xml"/>
             <test name="ALSD.CucumberTest.CucumberRunner" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
-            <classpath refid="ALSD2016-Test.classpath"/>
+            <classpath refid="ALSD2016_test.classpath"/>
         </junit>
     </target>
     <target name="Main">
         <java classname="ALSD.CucumberTest.Main" failonerror="true" fork="yes">
-            <classpath refid="ALSD2016-Test.classpath"/>
+            <classpath refid="ALSD2016_test.classpath"/>
         </java>
     </target>
     <target name="junitreport">
