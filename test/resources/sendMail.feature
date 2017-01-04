@@ -19,7 +19,7 @@ Feature: Test sendMail application
 		| Fields                 | Values      |
 		| alertMsg               | 寄送email結束. |
 		
-Scenario: When_ClickSendBtn_Expect_GetEmail  
+	Scenario: When_ClickSendBtn_Expect_GetEmail  
 		Given Enter sendMail application and check mail content was right
 		| Fields                 | Values        |
 		| courseName             | SendMailTest  |
