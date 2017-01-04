@@ -101,7 +101,7 @@ public class send_Mail_Step {
 
 	@Then("^I will get successful message on alert$")
 	public void CheckSuccessfulMsg(Map<String, String> dataList) throws Throwable {
-		TimeUnit.SECONDS.sleep(5);
+		TimeUnit.SECONDS.sleep(15);
 		assertEquals(dataList.get("alertMsg") , driver.switchTo().alert().getText());
 		driver.switchTo().alert().accept();		
 		driver.quit();
@@ -110,7 +110,7 @@ public class send_Mail_Step {
 	//Scenario: When_ClickSendBtn_Expect_GetEmail
 	@Then("^I can get a mail from teddysoft$")
 	public void CheckEmailfromTeddysoft(Map<String, String> dataList) throws Throwable {
-		TimeUnit.SECONDS.sleep(5);
+		TimeUnit.SECONDS.sleep(15);
 		driver.switchTo().alert().accept();			
 
 		String[] mail = ReceiveMail.check(host, mailStoreType, username, password);
