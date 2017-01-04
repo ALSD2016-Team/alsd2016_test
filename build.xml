@@ -25,7 +25,6 @@
         <pathelement location="libs/junit-4.12.jar"/>
         <pathelement location="libs/cucumber-html-0.2.3.jar"/>
         <pathelement location="libs/selenium-server-standalone-3.0.1.jar"/>
-        <path refid="JUnit 4.libraryclasspath"/>
         <pathelement location="libs/java-json.jar"/>
         <pathelement location="libs/mail.jar"/>
     </path>
