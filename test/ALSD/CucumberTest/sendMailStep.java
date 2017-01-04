@@ -23,10 +23,12 @@ public class sendMailStep {
 	
 	WebDriver driver;
 	private static String OS = System.getProperty("os.name").toLowerCase();
+	private static String location = "http://localhost:8080/sendMail/#/";
 	private static String host = "pop.gmail.com";
 	private static String mailStoreType = "pop3";
 	private static String username = "ntutalsd1221@gmail.com";
 	private static String password = "alsd2016";
+	
 	
 	//Scenario: When_ClickGenerateBtn_Expect_CorrectMailContent
 	@Given("^Enter sendMail application and select course$") 
@@ -37,17 +39,22 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get(location);
 		
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_0")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_1")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_2")).click();
 	}
 
 	@When("^I click generate button$")
 	public void ClickGenerateBtn() throws InterruptedException {
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("preview_submit")).click();	
 	}
 
@@ -69,13 +76,18 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get(location);
 		
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_0")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_1")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_2")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("preview_submit")).click();
 	}
 	@When("^I click send button and check to send$")
@@ -83,7 +95,9 @@ public class sendMailStep {
 		//delete all mail
 	    ReceiveMail.delete(host, mailStoreType, username, password);
 		
+	    TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("send_submit")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.switchTo().alert().accept();
 	}
 
@@ -122,11 +136,13 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get(location);
 	}
 	@When("^I click generate button and send button$")
 	public void ClickGenerateBtnandSendBtn() throws InterruptedException {
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("preview_submit")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("send_submit")).click();
 	}
 
@@ -147,18 +163,25 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get(location);
 		
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_0")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_1")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("ccCheckbox_2")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.name("checkbox_name")).click();
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("preview_submit")).click();
 	}
 	@When("^I click send mail button$")
 	public void ClickSendButton() throws InterruptedException {
+		TimeUnit.MILLISECONDS.sleep(500);
 		driver.findElement(By.id("send_submit")).click();
 		TimeUnit.SECONDS.sleep(1);
 		driver.switchTo().alert().accept();
