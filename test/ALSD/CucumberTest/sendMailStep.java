@@ -37,7 +37,7 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get("http://localhost:9003/sendMail/#/");
 		
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
@@ -69,7 +69,7 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get("http://localhost:9003/sendMail/#/");
 		
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
@@ -122,7 +122,7 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get("http://localhost:9003/sendMail/#/");
 	}
 	@When("^I click generate button and send button$")
 	public void ClickGenerateBtnandSendBtn() throws InterruptedException {
@@ -147,7 +147,7 @@ public class sendMailStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/sendMail/#/");
+		driver.get("http://localhost:9003/sendMail/#/");
 		
 		driver.findElement(By.id("courseCheckbox")).sendKeys(dataList.get("courseName"));
 		
