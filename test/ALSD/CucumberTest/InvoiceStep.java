@@ -31,8 +31,8 @@ public class InvoiceStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-//		driver.get("http://140.124.181.126:9091/#/others/invoice");
-		driver.get("http://localhost:9001/");
+		driver.get("http://140.124.181.126:9001/#/others/invoice");
+//		driver.get("http://localhost:9001/");
 	}
 
 	@When("^I enter the CorrectData into the form of triplicate uniform invoice$")
@@ -206,7 +206,8 @@ public class InvoiceStep {
 						System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 
 					driver = new ChromeDriver();
-					driver.get("http://localhost:9001/");
+					driver.get("http://140.124.181.126:9001/#/others/invoice");
+//					driver.get("http://localhost:9001/");
 					TimeUnit.SECONDS.sleep(1);
 					driver.findElement(By.id("DUI_button")).click();
 				}

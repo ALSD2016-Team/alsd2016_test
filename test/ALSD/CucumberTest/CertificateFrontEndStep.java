@@ -36,8 +36,8 @@ public class CertificateFrontEndStep {
 			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver");
 		
 		driver = new ChromeDriver();
-//		driver.get("http://140.124.181.126:9090/Certification/");
-		driver.get("http://localhost:9000/Certification/");
+		driver.get("http://140.124.181.126:9000/Certification/");
+//		driver.get("http://localhost:9000/Certification/");
 	}
 
 	@When("I enter the correct value into the form$")
