@@ -33,6 +33,7 @@
         <pathelement location="libs/selenium-server-standalone-3.0.1.jar"/>
         <path refid="JUnit 4.libraryclasspath"/>
         <pathelement location="libs/java-json.jar"/>
+        <pathelement location="libs/mail.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
