@@ -13,6 +13,7 @@ import cucumber.api.junit.Cucumber;
 //				"classpath:resources/invoice.feature",
 //				"classpath:resources/certificate_frontend.feature",
 				"classpath:resources/sendMail.feature"
+				
 				}
 )
 
