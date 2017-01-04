@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 		monochrome = true,
 		features = {
 				"classpath:resources/invoice.feature",
-				"classpath:resources/certificate_frontend.feature"
+				"classpath:resources/certificate_frontend.feature",
 				"classpath:resources/sendMail.feature"
 				}
 )
