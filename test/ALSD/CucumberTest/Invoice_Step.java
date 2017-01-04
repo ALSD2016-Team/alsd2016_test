@@ -63,44 +63,44 @@ public class Invoice_Step {
 	    
 		TimeUnit.SECONDS.sleep(2);
 		
-		assertEquals(dataList.get("date"), driver.findElement(By.id("result_date")).getText());
-		assertEquals(dataList.get("companyName"), driver.findElement(By.id("result_company")).getText());
-		
-		String companyId = driver.findElement(By.id("result_compony_id_0")).getText() +
-				driver.findElement(By.id("result_compony_id_1")).getText() + 
-				driver.findElement(By.id("result_compony_id_2")).getText() + 
-				driver.findElement(By.id("result_compony_id_3")).getText() + 
-				driver.findElement(By.id("result_compony_id_4")).getText() +
-				driver.findElement(By.id("result_compony_id_5")).getText() +
-				driver.findElement(By.id("result_compony_id_6")).getText() +
-				driver.findElement(By.id("result_compony_id_7")).getText() ;
-		
-		TimeUnit.SECONDS.sleep(1);
-		assertEquals(dataList.get("companyId"), companyId);
-		
-		assertEquals(dataList.get("year"), driver.findElement(By.id("result_year")).getText());
-		assertEquals(dataList.get("month"), driver.findElement(By.id("result_month")).getText());
-		assertEquals(dataList.get("day"), driver.findElement(By.id("result_day")).getText());
-		assertEquals(dataList.get("itemName"), driver.findElement(By.id("result_item_name")).getText());
-		assertEquals(dataList.get("itemCount"), driver.findElement(By.id("result_item_count")).getText());
-		assertEquals(dataList.get("itemDollar"), driver.findElement(By.id("result_item_dollar")).getText());
-		assertEquals(dataList.get("itemTotalDollar"), driver.findElement(By.id("result_item_total_dollar")).getText());
-		assertEquals(dataList.get("salesDollar"), driver.findElement(By.id("result_sales_dollar")).getText());
-		assertEquals(dataList.get("businessTax"), driver.findElement(By.id("result_business_tax")).getText());
-		
-		String numberWord = 
-				driver.findElement(By.id("result_number_word_4")).getText() +
-				driver.findElement(By.id("result_number_word_5")).getText() +
-				driver.findElement(By.id("result_number_word_6")).getText() +
-				driver.findElement(By.id("result_number_word_7")).getText() +
-				driver.findElement(By.id("result_number_word_8")).getText() ;
-		
-		assertEquals(dataList.get("numberWord"), numberWord);
-		
-	
-		TimeUnit.SECONDS.sleep(1);
-        driver.quit();
-	
+		try{
+			assertEquals(dataList.get("date"), driver.findElement(By.id("result_date")).getText());
+			assertEquals(dataList.get("companyName"), driver.findElement(By.id("result_company")).getText());
+			
+			String companyId = driver.findElement(By.id("result_compony_id_0")).getText() +
+					driver.findElement(By.id("result_compony_id_1")).getText() + 
+					driver.findElement(By.id("result_compony_id_2")).getText() + 
+					driver.findElement(By.id("result_compony_id_3")).getText() + 
+					driver.findElement(By.id("result_compony_id_4")).getText() +
+					driver.findElement(By.id("result_compony_id_5")).getText() +
+					driver.findElement(By.id("result_compony_id_6")).getText() +
+					driver.findElement(By.id("result_compony_id_7")).getText() ;
+			
+			TimeUnit.SECONDS.sleep(1);
+			assertEquals(dataList.get("companyId"), companyId);
+			
+			assertEquals(dataList.get("year"), driver.findElement(By.id("result_year")).getText());
+			assertEquals(dataList.get("month"), driver.findElement(By.id("result_month")).getText());
+			assertEquals(dataList.get("day"), driver.findElement(By.id("result_day")).getText());
+			assertEquals(dataList.get("itemName"), driver.findElement(By.id("result_item_name")).getText());
+			assertEquals(dataList.get("itemCount"), driver.findElement(By.id("result_item_count")).getText());
+			assertEquals(dataList.get("itemDollar"), driver.findElement(By.id("result_item_dollar")).getText());
+			assertEquals(dataList.get("itemTotalDollar"), driver.findElement(By.id("result_item_total_dollar")).getText());
+			assertEquals(dataList.get("salesDollar"), driver.findElement(By.id("result_sales_dollar")).getText());
+			assertEquals(dataList.get("businessTax"), driver.findElement(By.id("result_business_tax")).getText());
+			
+			String numberWord = 
+					driver.findElement(By.id("result_number_word_4")).getText() +
+					driver.findElement(By.id("result_number_word_5")).getText() +
+					driver.findElement(By.id("result_number_word_6")).getText() +
+					driver.findElement(By.id("result_number_word_7")).getText() +
+					driver.findElement(By.id("result_number_word_8")).getText() ;
+			
+			assertEquals(dataList.get("numberWord"), numberWord);
+			
+		}finally{
+			driver.quit();
+		}
 		
 	}
 	

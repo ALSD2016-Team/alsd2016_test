@@ -30,14 +30,14 @@ public class CourseManageStep {
 	
 	@When("I input correct value into form of create course$")
 	public void InputCorrectValueToCM(Map<String, String> dataList) throws InterruptedException {
-		driver.close();
-
+		
+		
 	}
 	
 	@Then("^I click AddCourse Button and get successful message$")
-	public void ClickAddCourseButton(Map<String, String> dataList) throws Throwable {
+	public void ClickAddCourseButton() throws Throwable {
 	    
-		
+		driver.close();
 	}
 	
 	
